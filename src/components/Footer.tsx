@@ -268,7 +268,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3 — Packaging Products (single column with bullets) */}
-          <div className="lg:col-span-2">
+          <div className="md:col-span-2">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Packaging Products
             </h4>
@@ -285,11 +285,20 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                <Link
+                  to="/custom-boxes"
+                  className="hover:text-primary transition-colors text-secondary-foreground/70"
+                >
+                  can not find your category
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Column 4 — Contact + Free Shipping */}
-          <div>
+          <div className="ml-auto lg:col-span-2 lg:pl-8">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Contact Us
             </h4>

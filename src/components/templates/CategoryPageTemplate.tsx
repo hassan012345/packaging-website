@@ -26,7 +26,7 @@ function FAQSection({ faq }) {
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-10">
           Frequently Asked Questions
         </h2>
 
@@ -51,7 +51,7 @@ function FAQSection({ faq }) {
                   shadow-sm
                 "
               >
-                <button
+                  <button
                   onClick={() => toggle(index)}
                   className="
                     flex
@@ -64,7 +64,7 @@ function FAQSection({ faq }) {
                     text-left
                   "
                 >
-                  <span className="font-semibold text-foreground">
+                  <span className="font-semibold text-amber-600">
                     {item.question}
                   </span>
 
@@ -74,7 +74,7 @@ function FAQSection({ faq }) {
                     }}
                     transition={{ duration: 0.2 }}
                   >
-                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                    <ChevronRight className="h-5 w-5 text-amber-600" />
                   </motion.div>
                 </button>
 
@@ -100,7 +100,7 @@ function FAQSection({ faq }) {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-5">
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-sm leading-relaxed text-amber-600">
                           {item.answer}
                         </p>
                       </div>

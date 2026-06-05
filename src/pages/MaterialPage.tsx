@@ -14,6 +14,13 @@ const MaterialPage = () => {
   const material = slug ? getMaterialBySlug(slug) : undefined;
   const images = (material as any)?.images || [];
   const [activeIndex, setActiveIndex] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+
+  const descriptionLimit = 200;
+  const isLong = material.description.length > descriptionLimit;
+  const displayDesc = expanded || !isLong
+    ? material.description
+    : material.description.slice(0, descriptionLimit) + "…";
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -51,7 +58,7 @@ const MaterialPage = () => {
             <div className="space-y-4">
               <div className="rounded-2xl overflow-hidden border border-border bg-card aspect-[4/3] relative flex items-center justify-center">
                 {images.length > 0 ? (
-                  <img src={images[activeIndex]} alt={`${material.name} - image ${activeIndex + 1}`} className="w-full h-full object-contain transition-opacity duration-500" key={activeIndex} />
+                  <img src={images[activeIndex]} alt={`${material.name} - image ${activeIndex + 1}`} className="w-full h-full object-fit transition-opacity duration-500" key={activeIndex} />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
                     <Icon className="h-32 w-32 text-white/40" />
@@ -62,7 +69,7 @@ const MaterialPage = () => {
                 <div className="flex gap-2 flex-wrap">
                   {images.map((img: string, i: number) => (
                     <button key={i} onClick={() => handleThumbnailClick(i)} className={`w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${i === activeIndex ? "border-primary ring-2 ring-primary/30" : "border-border hover:border-primary/50"}`}>
-                      <img src={img} alt={`${material.name} thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`${material.name} thumbnail ${i + 1}`} className="w-full h-full object-fit" />
                     </button>
                   ))}
                 </div>
@@ -76,7 +83,15 @@ const MaterialPage = () => {
                   In Stock
                 </span>
               </div>
-              <p className="text-muted-foreground leading-relaxed">{material.description}</p>
+              <p className="text-muted-foreground leading-relaxed">{displayDesc}</p>
+              {isLong && (
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="text-primary text-sm font-medium mt-1 hover:underline"
+                >
+                  {expanded ? "Show Less" : "Read More"}
+                </button>
+              )}
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {["Custom sizes available", "Full-color CMYK printing", "Free shipping across USA", "No die & plate charges", "Fast turnaround time", "Eco-friendly options"].map((f) => (
                   <li key={f} className="flex items-center gap-2 text-sm text-foreground"><CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />{f}</li>

@@ -24,7 +24,7 @@ const Index = () => (
           <div className="lg:col-span-7 rounded-lg p-4">
             <QuoteForm />
           </div>
-          <div className="lg:col-span-5 rounded-lg p-4">
+          <div className="lg:col-span-5 mt-[120px] rounded-lg p-4">
             <FAQSection />
           </div>
         </div>

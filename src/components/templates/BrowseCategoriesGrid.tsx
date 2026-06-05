@@ -61,10 +61,10 @@ const BrowseCategoriesGrid = () => {
                   <div
                     className="
                             absolute inset-0
-                            bg-green-600/90
+                            bg-[#3F9472]
                             flex items-center justify-center
                             opacity-0
-                            group-hover:opacity-100
+                            group-hover:opacity-95
                             transition-all duration-300
                           "
                   >

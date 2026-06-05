@@ -19,11 +19,11 @@ const FAQSection = () => (
     <h3 className="text-2xl font-black text-foreground mb-6">Frequently Asked Questions</h3>
     <Accordion type="single" collapsible className="space-y-3">
       {faqs.map((faq, i) => (
-        <AccordionItem key={i} value={`faq-${i}`} className="border rounded-xl px-6 bg-background">
+        <AccordionItem key={i} value={`faq-${i}`} className="border rounded-xl px-6 bg-background border-amber-200">
           <AccordionTrigger className="text-left font-semibold text-amber-600 hover:no-underline">
             {faq.q}
           </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground leading-relaxed">
+          <AccordionContent className="text-amber-600 leading-relaxed">
             {faq.a}
           </AccordionContent>
         </AccordionItem>

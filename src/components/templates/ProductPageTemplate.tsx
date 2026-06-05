@@ -149,15 +149,15 @@ const ProductPageTemplate = ({ product }: Props) => {
       {product.faq.length > 0 && (
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4 max-w-3xl">
-            <h2 className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-center text-foreground mb-10">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {product.faq.map((item, i) => (
                 <details key={i} className="bg-card border border-border rounded-xl p-5 group">
-                  <summary className="font-semibold text-foreground cursor-pointer list-none flex items-center justify-between">
+                  <summary className="font-semibold cursor-pointer list-none flex items-center justify-between text-amber-600">
                     {item.question}
                     <ChevronRight className="h-4 w-4 transition-transform group-open:rotate-90" />
                   </summary>
-                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed">{item.answer}</p>
+                  <p className="mt-3 text-amber-600 text-sm leading-relaxed">{item.answer}</p>
                 </details>
               ))}
             </div>
