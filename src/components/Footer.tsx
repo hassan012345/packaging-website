@@ -291,7 +291,7 @@ const Footer = () => {
                   to="/custom-boxes"
                   className="hover:text-primary transition-colors text-secondary-foreground/70"
                 >
-                  can not find your category
+                  Can not find your category?
                 </Link>
               </li>
             </ul>

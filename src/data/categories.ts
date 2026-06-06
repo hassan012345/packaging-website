@@ -324,23 +324,23 @@ export const categories: Category[] = [
       { question: "Can retail boxes include window cut-outs?", answer: "Yes, window cut-outs with clear PET film are a popular option for retail display." },
     ],
   },
-  {
-    slug: "custom-vape-boxes",
-    name: "Custom Vape Boxes",
-    icon: Cigarette,
-    gradient: "from-slate-500 to-gray-600",
-    images: ["/images/categories/vape_1.jpg", "/images/categories/vape_2.jpg", "/images/categories/vape_3.jpg", "/images/categories/vape_4.jpg", "/images/categories/vape_5.jpg"],
-    description: "Modern vape packaging with inserts and premium finishing options.",
-    longDescription: "Our vape boxes are designed to securely hold vape pens, cartridges, and e-liquid bottles. Available with foam or cardboard inserts, window cut-outs, and premium finishes.",
-    subProducts: [
-      { name: "Custom Disposable Vape Boxes", slug: "disposable-vape-boxes" },
-      { name: "Custom E-Liquid Boxes", slug: "e-liquid-boxes" },
-      { name: "Custom Vape Cartridge Boxes", slug: "vape-cartridge-boxes" },
-    ],
-    faq: [
-      { question: "Can vape boxes include inserts?", answer: "Yes, we offer custom die-cut inserts designed to hold vape products securely." },
-    ],
-  },
+  // {
+  //   slug: "custom-vape-boxes",
+  //   name: "Custom Vape Boxes",
+  //   icon: Cigarette,
+  //   gradient: "from-slate-500 to-gray-600",
+  //   images: ["/images/categories/vape_1.jpg", "/images/categories/vape_2.jpg", "/images/categories/vape_3.jpg", "/images/categories/vape_4.jpg", "/images/categories/vape_5.jpg"],
+  //   description: "Modern vape packaging with inserts and premium finishing options.",
+  //   longDescription: "Our vape boxes are designed to securely hold vape pens, cartridges, and e-liquid bottles. Available with foam or cardboard inserts, window cut-outs, and premium finishes.",
+  //   subProducts: [
+  //     { name: "Custom Disposable Vape Boxes", slug: "disposable-vape-boxes" },
+  //     { name: "Custom E-Liquid Boxes", slug: "e-liquid-boxes" },
+  //     { name: "Custom Vape Cartridge Boxes", slug: "vape-cartridge-boxes" },
+  //   ],
+  //   faq: [
+  //     { question: "Can vape boxes include inserts?", answer: "Yes, we offer custom die-cut inserts designed to hold vape products securely." },
+  //   ],
+  // },
 ];
 
 export const getCategoryBySlug = (slug: string): Category | undefined =>
