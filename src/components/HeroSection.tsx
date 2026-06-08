@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import arrowImg from "@/assets/arrow.png";
-import { useRef } from "react";
 
 const heroImages = [
   "/images/categories/candle_1.jpg",
   "/images/categories/soap_1.jpg",
   "/images/categories/cosmetic_1.jpg",
-  "/images/categories/mailer_1.jpg",
+  "/images/categories/bakery_1.jpg",
 ];
 
 const HeroSection = () => {
@@ -32,7 +31,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 text-[#3F9472]">
               Custom Packaging your customers will love
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-lg text-[#4F7092]">
+            <p className="text-lg md:text-xl text-yellow-400 mb-8 max-w-lg">
               Delivered within 7 days with free shipping in the USA.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -69,18 +68,16 @@ const HeroSection = () => {
           {/* Product image collage */}
           <div className="hidden lg:grid grid-cols-2 gap-4">
             {heroImages.map((img, i) => (
-              <div
-                key={i}
-                className={`rounded-2xl overflow-hidden shadow-2xl ${i === 1 ? "mt-4" : i === 2 ? "-mt-4" : ""}`}
-              >
+              <div key={i} className="rounded-2xl overflow-hidden shadow-2xl bg-white/10">
                 <img
                   src={img}
                   alt="Custom packaging"
-                  className="w-full aspect-[4/3] h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full aspect-[4/3] h-auto object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
             ))}
           </div>
+          
         </div>
       </div>
     </section>

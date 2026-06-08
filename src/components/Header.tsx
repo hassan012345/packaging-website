@@ -77,9 +77,17 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navigate = useNavigate();
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const searchValue = searchTerm.trim();
+    if (!searchValue) return;
+    navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+  };
 
   const scrollToQuote = () => {
     if (window.location.pathname === "/") {
@@ -115,7 +123,7 @@ const Header = () => {
           <img
             src={logoImg}
             alt="Custom Packaging Lane"
-            className="h-8 md:h-8 w-auto"
+            className="h-10 md:h-10 w-auto"
           />
         </Link>
 
@@ -178,14 +186,22 @@ const Header = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
-          <div className="relative">
+          <form onSubmit={handleSearchSubmit} className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               type="text"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
               placeholder="Search products..."
-              className="w-48 h-9 text-sm pl-8 border-foreground/30"
+              className="w-56 h-9 text-sm pl-8 pr-16 border-foreground/30"
             />
-          </div>
+            <button
+              type="submit"
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
+            >
+              Go
+            </button>
+          </form>
           <Button
             onClick={scrollToQuote}
             size="default"
@@ -210,14 +226,16 @@ const Header = () => {
       {mobileOpen && (
         <div className="lg:hidden bg-background border-t border-border px-4 pb-4 max-h-[80vh] overflow-y-auto">
           <div className="py-3">
-            <div className="relative">
+            <form onSubmit={handleSearchSubmit} className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
                 placeholder="Search products..."
                 className="pl-9 h-9 text-sm border-foreground/30"
               />
-            </div>
+            </form>
           </div>
           {navItems.map((item) => (
             <div

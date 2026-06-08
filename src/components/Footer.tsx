@@ -179,35 +179,45 @@ const Footer = () => {
             </h4>
             <div className="flex items-center gap-2.5">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61589609734656"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:opacity-80 transition-opacity"
                 aria-label="Facebook"
               >
                 <FacebookIcon />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/custompackagingline/"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:opacity-80 transition-opacity"
                 aria-label="Instagram"
               >
                 <InstagramIcon />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@CustomPackagingLine"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:opacity-80 transition-opacity"
                 aria-label="YouTube"
               >
                 <YouTubeIcon />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/custompackagingline/posts/?feedView=all"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:opacity-80 transition-opacity"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
               </a>
               <a
-                href="#"
+                href="https://www.pinterest.com/custompackagingline"
+                target="_blank"
+                rel="noreferrer"
                 className="hover:opacity-80 transition-opacity"
                 aria-label="Pinterest"
               >
@@ -223,12 +233,9 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3 text-sm text-secondary-foreground/70">
               {[
+                { label: "About Us", href: "/about-us" },
+                { label: "Contact Us", href: "#quote" },
                 { label: "Terms and Conditions", href: "/cpl-policies" },
-
-                {
-                  label: "Refund / Cancellation Policy",
-                  href: "/refund-policy",
-                },
                 {
                   label: "Artwork Approval / Production Policy",
                   href: "/artwork-policy",
@@ -237,10 +244,14 @@ const Footer = () => {
                   label: "Payment Methods / Billing Policy",
                   href: "/payment-policy",
                 },
+                {
+                  label: "Refund / Cancellation Policy",
+                  href: "/refund-policy",
+                },
+
                 { label: "Shipping Policy", href: "/shipping-policy" },
                 { label: "Privacy Policy", href: "/privacy-policy" },
-                { label: "Contact Us", href: "#quote" },
-                { label: "About Us", href: "/about-us" },
+
                 { label: "Portfolio", href: "/portfolio" },
                 { label: "FAQs", href: "/blog" },
               ].map((l) => (
@@ -298,7 +309,7 @@ const Footer = () => {
           </div>
 
           {/* Column 4 — Contact + Free Shipping */}
-          <div className="ml-auto lg:col-span-2 lg:pl-8">
+          <div className="lg:col-span-2 lg:pl-8">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Contact Us
             </h4>
@@ -313,7 +324,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                New York, NY
+                3400 N Central Expy Ste #110-227, Richardson, TX 75080
               </li>
             </ul>
 

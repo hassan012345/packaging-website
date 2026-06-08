@@ -1,4 +1,4 @@
-import { Shirt, Cannabis, Cigarette, Pill, Gift, Package, FlaskConical, ShoppingBag } from "lucide-react";
+import { Shirt, Cannabis, Cigarette, Pill, Gift, Package, FlaskConical, ShoppingBag, Cpu } from "lucide-react";
 import { CandleIcon, SoapIcon, FoodDomeIcon, CandyIcon, LipstickIcon, CupcakeIcon, LuxuryBoxIcon, RingIcon } from "@/components/icons/category-icons";
 
 export interface SubProduct {
@@ -141,6 +141,52 @@ export const categories: Category[] = [
     ],
     faq: [
       { question: "What sizes are available for apparel boxes?", answer: "We offer fully customizable sizes to fit any garment type from accessories to outerwear." },
+    ],
+  },
+  {
+    slug: "auto-parts",
+    name: "Auto Parts Packaging",
+    icon: Package,
+    gradient: "from-slate-500 to-slate-700",
+    images: [
+      "/images/categories/auto_lock_1.jpg",
+      "/images/categories/auto_lock_2.jpg",
+      "/images/categories/auto_lock_3.jpg",
+      "/images/categories/auto_lock_4.jpg",
+    ],
+    description: "Durable packaging designed for automotive parts, replacement components, and aftermarket products.",
+    longDescription: "Our auto parts packaging is engineered to protect heavy and irregular components during shipping and storage. We offer corrugated inserts, foam cushioning, and reinforced boxes for gears, filters, tools, and accessories.",
+    subProducts: [
+      { name: "Custom Auto Parts Boxes", slug: "auto-parts-boxes" },
+      { name: "Heavy-Duty Shipping Boxes", slug: "heavy-duty-shipping-boxes" },
+      { name: "Corrugated Inserts", slug: "corrugated-inserts" },
+    ],
+    faq: [
+      { question: "Can you package fragile automotive components?", answer: "Yes, we provide foam inserts, custom die-cut trays, and reinforced boxes to protect fragile and precision parts." },
+      { question: "Do you offer low minimum orders for auto parts packaging?", answer: "Yes, our solutions are available for both small batches and high-volume production runs." },
+    ],
+  },
+  {
+    slug: "electronics",
+    name: "Electronics Packaging",
+    icon: Cpu,
+    gradient: "from-cyan-500 to-blue-600",
+    images: [
+      "/images/categories/mailer_1.jpg",
+      "/images/categories/retail_1.jpg",
+      "/images/categories/retail_2.jpg",
+      "/images/categories/retail_3.jpg",
+    ],
+    description: "Protective packaging solutions for electronics, gadgets, and sensitive components.",
+    longDescription: "Our electronics packaging keeps devices safe from shock, moisture, and static during transit. We offer custom-fit trays, anti-static materials, and premium printed boxes designed for consumer electronics and technical products.",
+    subProducts: [
+      { name: "Anti-Static Boxes", slug: "anti-static-boxes" },
+      { name: "Custom Electronics Trays", slug: "custom-electronics-trays" },
+      { name: "Shipping Ready Gadget Boxes", slug: "shipping-ready-gadget-boxes" },
+    ],
+    faq: [
+      { question: "Can you use anti-static materials for electronics packaging?", answer: "Yes, we offer anti-static board and cushioning to protect sensitive electronic components." },
+      { question: "Can electronics packaging be branded with my logo?", answer: "Absolutely, we print full-color branding, instructions, and product details on every electronics package." },
     ],
   },
   {
