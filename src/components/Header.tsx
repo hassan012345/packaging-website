@@ -288,12 +288,11 @@ const Header = () => {
                   <button
                     key={idx}
                     onClick={() => handleSearchResultClick(result.slug)}
-                    className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0 flex items-center gap-2"
+                    className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0"
                   >
-                    <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex-shrink-0">
-                      {result.type}
+                    <span className="text-sm text-popover-foreground">
+                      {result.name}
                     </span>
-                    <span className="text-sm text-popover-foreground flex-1 truncate">{result.name}</span>
                   </button>
                 ))}
                 <button
@@ -355,24 +354,25 @@ const Header = () => {
                         handleSearchResultClick(result.slug);
                         setMobileOpen(false);
                       }}
-                      className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0 flex items-center gap-2"
+                      className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0"
                     >
-                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex-shrink-0">
-                        {result.type}
+                      <span className="text-sm text-popover-foreground">
+                        {result.name}
                       </span>
-                      <span className="text-sm text-popover-foreground flex-1 truncate">{result.name}</span>
                     </button>
                   ))}
                   <button
                     onClick={() => {
                       const searchValue = searchTerm.trim();
                       if (searchValue) {
-                        navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+                        navigate(
+                          `/search?q=${encodeURIComponent(searchValue)}`,
+                        );
                         setShowSearchDropdown(false);
                         setMobileOpen(false);
                       }
                     }}
-                    className="w-full px-4 py-2.5 text-sm font-semibold text-primary hover:bg-accent transition-colors border-t border-border/30"
+                    className=" w-full px-4 py-2.5 text-sm font-semibold text-primary hover:bg-accent transition-colors border-t border-border/30"
                   >
                     View all results
                   </button>
