@@ -147,12 +147,12 @@ const Footer = () => {
           className="h-16 w-auto object-contain"
         />
       </div>
-      <hr className="border-t border-secondary-foreground/20 mb-10" />
+      <hr className="max-w-5xl border-t border-secondary-foreground/20 mb-10 mx-auto" />
 
       <div className="container mx-auto px-4 pt-6 pb-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-12  mb-10">
-          {/* Column 1 — Payment + Social */}
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-10">
+          {/* Column 1 — Payment + Social (3/12) */}
+          <div className="lg:col-span-3">
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3 text-white">
               Payment Methods
             </h4>
@@ -226,8 +226,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2 — Information */}
-          <div className="lg:pl-8">
+          {/* Column 2 — Information (3/12) */}
+          <div className="lg:col-span-3">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Information
             </h4>
@@ -248,10 +248,8 @@ const Footer = () => {
                   label: "Refund / Cancellation Policy",
                   href: "/refund-policy",
                 },
-
                 { label: "Shipping Policy", href: "/shipping-policy" },
                 { label: "Privacy Policy", href: "/privacy-policy" },
-
                 { label: "Portfolio", href: "/portfolio" },
                 { label: "FAQs", href: "/blog" },
               ].map((l) => (
@@ -278,16 +276,15 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3 — Packaging Products (single column with bullets) */}
-          <div className="md:col-span-2">
+          {/* Column 3 — Packaging Products (3/12) */}
+          <div className="lg:col-span-3">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Packaging Products
             </h4>
-            <ul className="grid grid-cols-2 gap-y-3 text-sm text-secondary-foreground/70 max-w-md">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-secondary-foreground/70">
               {categories.map((cat) => (
                 <li key={cat.slug} className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-
                   <Link
                     to={`/product-category/${cat.slug}`}
                     className="hover:text-primary transition-colors"
@@ -308,8 +305,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4 — Contact + Free Shipping */}
-          <div className="lg:col-span-2 lg:pl-8">
+          {/* Column 4 — Contact + Free Shipping (3/12) */}
+          <div className="lg:col-span-3">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Contact Us
             </h4>
@@ -328,7 +325,7 @@ const Footer = () => {
               </li>
             </ul>
 
-            <div className="mb-4">
+            <div>
               <p className="text-2xl font-extrabold uppercase tracking-wide text-white leading-tight">
                 100% FREE
               </p>
@@ -341,11 +338,10 @@ const Footer = () => {
               <p className="text-sm font-semibold text-white mt-1">
                 All Across USA
               </p>
-              <p className="text-4xl mt-2">USA</p>
               <img
                 src="https://flagcdn.com/w160/us.png"
                 alt="USA Flag"
-                className="mt-2 w-28 rounded-sm shadow"
+                className="mt-3 w-28 rounded-sm shadow"
               />
             </div>
           </div>
@@ -357,28 +353,21 @@ const Footer = () => {
             Our Logistics Partners
           </p>
           <div className="flex flex-wrap items-center justify-center gap-12">
-            {/* USPS */}
             <img
               src="/images/logos/usps-logo.png"
               alt="USPS"
               className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
             />
-
-            {/* DHL */}
             <img
               src="/images/logos/dhl-logo.png"
               alt="DHL"
               className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
             />
-
-            {/* FedEx */}
             <img
               src="/images/logos/fedex-logo.png"
               alt="FedEx"
               className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
             />
-
-            {/* UPS */}
             <img
               src="/images/logos/UPS-logo.jpg"
               alt="UPS"

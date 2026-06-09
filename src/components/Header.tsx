@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -78,15 +78,82 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navigate = useNavigate();
+
+  const getSearchResults = (query: string) => {
+    if (!query.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    const normalized = query.toLowerCase();
+    const results = [];
+
+    const categoryMatches = categories
+      .filter(
+        (item) =>
+          item.name.toLowerCase().includes(normalized) ||
+          item.description.toLowerCase().includes(normalized),
+      )
+      .slice(0, 3)
+      .map((item) => ({
+        type: "category",
+        name: item.name,
+        slug: `/product-category/${item.slug}`,
+      }));
+
+    const shapeMatches = shapes
+      .filter(
+        (item) =>
+          item.name.toLowerCase().includes(normalized) ||
+          item.description.toLowerCase().includes(normalized),
+      )
+      .slice(0, 2)
+      .map((item) => ({
+        type: "shape",
+        name: item.name,
+        slug: `/shapes/${item.slug}`,
+      }));
+
+    const materialMatches = materials
+      .filter(
+        (item) =>
+          item.name.toLowerCase().includes(normalized) ||
+          item.description.toLowerCase().includes(normalized),
+      )
+      .slice(0, 2)
+      .map((item) => ({
+        type: "material",
+        name: item.name,
+        slug: `/materials/${item.slug}`,
+      }));
+
+    results.push(...categoryMatches, ...shapeMatches, ...materialMatches);
+    setSearchResults(results.slice(0, 8));
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+    getSearchResults(value);
+    setShowSearchDropdown(true);
+  };
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const searchValue = searchTerm.trim();
     if (!searchValue) return;
     navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+    setShowSearchDropdown(false);
+  };
+
+  const handleSearchResultClick = (slug: string) => {
+    navigate(slug);
+    setSearchTerm("");
+    setShowSearchDropdown(false);
   };
 
   const scrollToQuote = () => {
@@ -112,6 +179,18 @@ const Header = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => setOpenDropdown(null), 200);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const searchElement = document.querySelector("form");
+      if (searchElement && !searchElement.contains(event.target as Node)) {
+        setShowSearchDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header className="sticky top-[41px] z-50 bg-background shadow-lg border-b border-border">
@@ -191,7 +270,8 @@ const Header = () => {
             <Input
               type="text"
               value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
+              onChange={(event) => handleSearchChange(event.target.value)}
+              onFocus={() => searchTerm && setShowSearchDropdown(true)}
               placeholder="Search products..."
               className="w-56 h-9 text-sm pl-8 pr-16 border-foreground/30"
             />
@@ -201,6 +281,35 @@ const Header = () => {
             >
               Go
             </button>
+
+            {showSearchDropdown && searchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                {searchResults.map((result, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSearchResultClick(result.slug)}
+                    className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0 flex items-center gap-2"
+                  >
+                    <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex-shrink-0">
+                      {result.type}
+                    </span>
+                    <span className="text-sm text-popover-foreground flex-1 truncate">{result.name}</span>
+                  </button>
+                ))}
+                <button
+                  onClick={() => {
+                    const searchValue = searchTerm.trim();
+                    if (searchValue) {
+                      navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+                      setShowSearchDropdown(false);
+                    }
+                  }}
+                  className="w-full px-4 py-2.5 text-sm font-semibold text-primary hover:bg-accent transition-colors border-t border-border/30"
+                >
+                  View all results
+                </button>
+              </div>
+            )}
           </form>
           <Button
             onClick={scrollToQuote}
@@ -231,10 +340,44 @@ const Header = () => {
               <Input
                 type="text"
                 value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
+                onChange={(event) => handleSearchChange(event.target.value)}
+                onFocus={() => searchTerm && setShowSearchDropdown(true)}
                 placeholder="Search products..."
                 className="pl-9 h-9 text-sm border-foreground/30"
               />
+
+              {showSearchDropdown && searchResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                  {searchResults.map((result, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        handleSearchResultClick(result.slug);
+                        setMobileOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0 flex items-center gap-2"
+                    >
+                      <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex-shrink-0">
+                        {result.type}
+                      </span>
+                      <span className="text-sm text-popover-foreground flex-1 truncate">{result.name}</span>
+                    </button>
+                  ))}
+                  <button
+                    onClick={() => {
+                      const searchValue = searchTerm.trim();
+                      if (searchValue) {
+                        navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+                        setShowSearchDropdown(false);
+                        setMobileOpen(false);
+                      }
+                    }}
+                    className="w-full px-4 py-2.5 text-sm font-semibold text-primary hover:bg-accent transition-colors border-t border-border/30"
+                  >
+                    View all results
+                  </button>
+                </div>
+              )}
             </form>
           </div>
           {navItems.map((item) => (

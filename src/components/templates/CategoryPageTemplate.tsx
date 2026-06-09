@@ -1,4 +1,10 @@
-import { useState, useEffect, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { Link } from "react-router-dom";
 import type { Category } from "@/data/categories";
 import { products } from "@/data/products";
@@ -51,7 +57,7 @@ function FAQSection({ faq }) {
                   shadow-sm
                 "
               >
-                  <button
+                <button
                   onClick={() => toggle(index)}
                   className="
                     flex
@@ -121,6 +127,20 @@ const CategoryPageTemplate = ({ category }: Props) => {
   const images = category.images || [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [isClamped, setIsClamped] = useState(false);
+
+  useLayoutEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const check = () => {
+      // compare full content height vs visible clamped height
+      setIsClamped(el.scrollHeight > el.clientHeight + 1);
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [category.longDescription]);
 
   const handleThumbnailClick = useCallback((i: number) => {
     setActiveIndex(i);
@@ -209,19 +229,30 @@ const CategoryPageTemplate = ({ category }: Props) => {
 
               <div>
                 <p
-                  className={`text-muted-foreground leading-relaxed ${!expanded ? "line-clamp-3" : ""}`}
+                  ref={textRef}
+                  className="text-muted-foreground leading-relaxed transition-all"
+                  style={
+                    !expanded
+                      ? {
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }
+                      : undefined
+                  }
                 >
                   {category.longDescription}
                 </p>
-                {category.longDescription &&
-                  category.longDescription.length > 150 && (
-                    <button
-                      onClick={() => setExpanded(!expanded)}
-                      className="text-primary text-sm font-medium mt-1 hover:underline"
-                    >
-                      {expanded ? "Show Less" : "Read More"}
-                    </button>
-                  )}
+
+                {(isClamped || expanded) && (
+                  <button
+                    onClick={() => setExpanded((v) => !v)}
+                    className="text-primary text-sm font-medium mt-1 hover:underline"
+                  >
+                    {expanded ? "Show Less" : "Read More"}
+                  </button>
+                )}
               </div>
 
               <InlineQuoteForm productType={category.name} />
