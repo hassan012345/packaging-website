@@ -25,18 +25,18 @@ const marqueeImages = [
 const sections = [
   {
     title: "What We Actually Do (And Why It's Easier Than You Think)",
-    text: "Custom packaging used to mean chasing designers, going back and forth with suppliers, waiting weeks, and paying more than you planned.\n\nWe changed that.\n\nAt Custom Packaging, the entire journey — from your first idea to the box landing at your doorstep — is handled by us. Here's what that looks like:\n\n• Design your packaging online — no prior experience needed\n• Receive a free 3D mockup — see exactly what your packaging will look like before a single box is made\n• Get transparent pricing upfront — no hidden fees, no die and plate charges, no surprises\n• Approve and go — fast 7-day turnaround, free shipping included\n\nWhether you're starting with 50 units or scaling to 50,000, we move at your pace.",
+    text: "Custom packaging used to mean chasing designers, going back and forth with suppliers, waiting weeks, and paying more than you planned.\n\nWe changed that.\n\nAt Custom Packaging, the entire journey, from your first idea to the box landing at your doorstep, is handled by us. Here's what that looks like:\n\n• Design your packaging online, no prior experience needed\n• Receive a free 3D mockup, see exactly what your packaging will look like before a single box is made\n• Get transparent pricing upfront, no hidden fees, no die and plate charges, no surprises\n• Approve and go, fast 7-day turnaround, free shipping included\n\nWhether you're starting with 50 units or scaling to 50,000, we move at your pace.",
     image: "/images/categories/mailer_2.jpg",
     reverse: false,
   },
   {
     title: "Everything You Need, Under One Roof",
-    text: "We manufacture and deliver a full range of custom packaging solutions:\n\nCustom Boxes\nFrom mailer boxes and retail packaging to corrugated shipping boxes and display stands — built to protect, designed to impress.\n\nRigid & Luxury Boxes\nWhen your product deserves a premium presentation, our rigid boxes, magnetic closure boxes, and tray & sleeve designs deliver that high-end feel from the very first touch.\n\nFlexible Packaging\nMylar bags, resealable pouches, and food-grade packaging — ideal for products that need moisture protection, shelf appeal, and a clean, professional look.\n\nPopular Styles Include:\nTuck boxes · Gable boxes · Pillow boxes · Window boxes · Magnetic closure boxes · Tray & sleeve boxes",
+    text: "We manufacture and deliver a full range of custom packaging solutions:\n\nCustom Boxes\nFrom mailer boxes and retail packaging to corrugated shipping boxes and display stands, built to protect, designed to impress.\n\nRigid & Luxury Boxes\nWhen your product deserves a premium presentation, our rigid boxes, magnetic closure boxes, and tray & sleeve designs deliver that high-end feel from the very first touch.\n\nFlexible Packaging\nMylar bags, resealable pouches, and food-grade packaging, ideal for products that need moisture protection, shelf appeal, and a clean, professional look.\n\nPopular Styles Include:\nTuck boxes · Gable boxes · Pillow boxes · Window boxes · Magnetic closure boxes · Tray & sleeve boxes",
     image: "/images/categories/luxury_1.jpg",
     reverse: true,
   },
   {
-    title: "Custom Means Custom — Every Detail, Your Way",
+    title: "Custom Means Custom, Every Detail, Your Way",
     text: "No two brands are alike, and neither are their boxes. At Custom Packaging, you choose:\n\nPrinting: Offset · Digital · Flexographic\n\nFinishes: Spot UV · Embossing & Debossing · Foil Stamping · Matte & Gloss Lamination · Soft Touch Finish\n\nAdd-ons: Inserts & Dividers · Bubble Wrap Protection · Custom Stickers & Labels\n\nIf you can imagine it, we can print it, cut it, and ship it.",
     image: "/images/categories/cosmetic_1.jpg",
     reverse: false,
@@ -128,20 +128,20 @@ const AboutUs = () => (
           done right.
         </p>
         <p className="text-muted-foreground leading-relaxed text-lg mb-4">
-          Custom Packaging wasn't built in a boardroom — it grew out of a
+          Custom Packaging wasn't built in a boardroom, it grew out of a
           deep-rooted family trade, passed down from one generation to the next,
           each one refining the craft, raising the standard, and staying
           committed to one simple belief: packaging should do more than just
           protect a product. It should sell it.
         </p>
         <p className="text-muted-foreground leading-relaxed text-lg mb-4">
-          For decades, we built our name on the shop floor — in the smell of
+          For decades, we built our name on the shop floor, in the smell of
           fresh ink, the precision of die-cut edges, and the satisfaction of
           handing a finished box to a business owner whose face lit up the
           moment they held it. That's still what drives us.
         </p>
         <p className="text-muted-foreground leading-relaxed text-lg">
-          Now, we're bringing that same legacy online — and making premium,
+          Now, we're bringing that same legacy online, and making premium,
           custom packaging accessible to brands across Pakistan and around the
           world.
         </p>
@@ -182,7 +182,7 @@ const AboutUs = () => (
         </h2>
         <p className="text-muted-foreground leading-relaxed text-lg mb-4">
           Every order that leaves our facility goes through the same standard
-          that three generations of our family have stood behind — sharp prints,
+          that three generations of our family have stood behind, sharp prints,
           accurate cuts, durable materials, and packaging that actually shows up
           looking the way it should.
         </p>
@@ -214,7 +214,7 @@ const AboutUs = () => (
           believe that's wrong. Low minimum order quantities, wholesale pricing
           options, and free design support mean that whether you're launching
           your very first product or managing a multi-SKU catalog, Custom
-          Packaging is built to scale with you — not price you out.
+          Packaging is built to scale with you, not price you out.
         </p>
       </div>
     </section>
@@ -227,7 +227,7 @@ const AboutUs = () => (
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-10">
           We're not just a supplier you order from and forget. We're the team
-          behind your packaging — the ones who make sure every box that carries
+          behind your packaging, the ones who make sure every box that carries
           your name looks like it belongs there.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

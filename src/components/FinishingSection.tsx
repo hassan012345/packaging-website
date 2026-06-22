@@ -21,7 +21,7 @@ const FinishingSection = () => (
         {/* Left column — branding + heading */}
         <div className="lg:w-1/3 bg-primary rounded-2xl p-10 flex flex-col justify-center text-primary-foreground">
           <span className="text-sm font-bold uppercase tracking-widest opacity-80">
-            Custom Packaging Lane
+            Custom Packaging Line
           </span>
           <h2 className="text-3xl md:text-4xl font-black mt-4 leading-tight">
             Finishing Assortments

@@ -1,19 +1,27 @@
 const brands = [
-  "Brand A", "Brand B", "Brand C", "Brand D", "Brand E",
-  "Brand F", "Brand G", "Brand H",
+  "Samsung",
+  "Bon Bon Candy",
+  "Bur Bur",
+  "CBD Plus",
+  "Best Cream",
+  "Bioscience",
+  "IT Cosmetics",
+  "Naras Cosmetics",
 ];
 
 const BrandLogos = () => (
-  <section className="py-12 bg-muted/20">
+  <section className="py-12 bg-muted/20 overflow-hidden">
     <div className="container mx-auto px-4">
       <p className="text-center text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wider">
         They Believed In Us
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-8">
-        {brands.map((brand) => (
+    </div>
+    <div className="flex overflow-hidden">
+      <div className="flex shrink-0 items-center gap-8 pr-8 animate-marquee hover:[animation-play-state:paused]">
+        {[...brands, ...brands].map((brand, i) => (
           <div
-            key={brand}
-            className="w-24 h-12 bg-muted rounded-lg flex items-center justify-center text-xs font-medium text-muted-foreground"
+            key={`${brand}-${i}`}
+            className="flex h-12 shrink-0 items-center justify-center whitespace-nowrap rounded-lg bg-muted px-6 text-sm font-semibold text-muted-foreground"
           >
             {brand}
           </div>

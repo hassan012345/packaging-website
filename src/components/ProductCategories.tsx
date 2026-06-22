@@ -14,7 +14,7 @@ const ProductCategories = () => (
           Explore Our 1,200+ Custom Box Packaging Styles
         </h2>
         <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-          From retail to food, cosmetics to cannabis — we serve every industry with packaging that matches your brand's originality.
+          From retail to food, cosmetics to cannabis, we serve every industry with packaging that matches your brand's originality.
         </p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -74,7 +74,7 @@ const ProductCategories = () => (
                 <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Can't find your category?</span>
               </div>
               <div className="p-3 flex items-center justify-between bg-primary text-primary-foreground">
-                <h3 className="text-sm font-bold line-clamp-1">Custom Boxes — Any Shape, Any Size</h3>
+                <h3 className="text-sm font-bold line-clamp-1">Custom Boxes, Any Shape, Any Size</h3>
                 <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
               </div>
             </motion.div>

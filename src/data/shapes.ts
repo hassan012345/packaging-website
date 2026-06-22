@@ -34,7 +34,6 @@ export const shapes: ShapeItem[] = [
     description:
       "Auto lock boxes feature a secure bottom that snaps into place automatically, making assembly quick and effortless. Ideal for retail and e-commerce packaging.",
     images: [
-      "/images/categories/auto_lock_1.jpg",
       "/images/categories/auto_lock_2.jpg",
       "/images/categories/auto_lock_3.jpg",
       "/images/categories/auto_lock_4.jpg",
@@ -142,7 +141,11 @@ export const materials: ShapeItem[] = [
     icon: Layers,
     description:
       "Cardboard packaging is lightweight yet sturdy, offering excellent printability and versatility for retail, cosmetic, and food packaging.",
-    images: ["/images/categories/retail_1.jpg", "/images/categories/retail_2.jpg", "/images/categories/retail_3.jpg"],
+    images: [
+      "/images/categories/retail_1.jpg",
+      "/images/categories/retail_2.jpg",
+      "/images/categories/retail_3.jpg",
+    ],
   },
   {
     name: "Custom Corrugated",
@@ -150,7 +153,11 @@ export const materials: ShapeItem[] = [
     icon: Box,
     description:
       "Corrugated packaging features fluted layers between flat sheets, providing superior strength and cushioning for shipping and heavy products.",
-    images: ["/images/categories/mailer_1.jpg", "/images/categories/mailer_2.jpg", "/images/categories/mailer_3.jpg"],
+    images: [
+      "/images/categories/mailer_1.jpg",
+      "/images/categories/mailer_2.jpg",
+      "/images/categories/mailer_3.jpg",
+    ],
   },
   {
     name: "Custom Kraft",
@@ -158,7 +165,11 @@ export const materials: ShapeItem[] = [
     icon: Leaf,
     description:
       "Kraft packaging is made from natural unbleached fibers, offering an eco-friendly and rustic look perfect for organic and artisan products.",
-    images: ["/images/categories/kraft_bakery_1.jpg", "/images/categories/kraft_bakery_2.jpg", "/images/categories/kraft_bakery_3.jpg"],
+    images: [
+      "/images/categories/kraft_bakery_1.jpg",
+      "/images/categories/kraft_bakery_2.jpg",
+      "/images/categories/kraft_bakery_3.jpg",
+    ],
   },
   {
     name: "Custom Rigid",
@@ -166,7 +177,11 @@ export const materials: ShapeItem[] = [
     icon: Gem,
     description:
       "Rigid boxes are premium non-collapsible packaging made from thick chipboard, ideal for luxury products, electronics, and high-end retail.",
-    images: ["/images/categories/luxury_1.jpg", "/images/categories/luxury_2.jpg", "/images/categories/luxury_3.jpg"],
+    images: [
+      "/images/categories/luxury_1.jpg",
+      "/images/categories/luxury_2.jpg",
+      "/images/categories/luxury_3.jpg",
+    ],
   },
   {
     name: "Custom Chipboard",
@@ -174,7 +189,10 @@ export const materials: ShapeItem[] = [
     icon: SquareStack,
     description:
       "Chipboard packaging is a cost-effective recycled paperboard, commonly used for cereal boxes, shoe boxes, and lightweight retail packaging.",
-    images: ["/images/categories/kraft_chocolate_1.jpg", "/images/categories/kraft_chocolate_2.jpg"],
+    images: [
+      "/images/categories/kraft_chocolate_1.jpg",
+      "/images/categories/kraft_chocolate_2.jpg",
+    ],
   },
   {
     name: "Custom Paperboard",
@@ -182,7 +200,10 @@ export const materials: ShapeItem[] = [
     icon: RectangleHorizontal,
     description:
       "Paperboard is a smooth, printable material perfect for folding cartons, cosmetic packaging, and pharmaceutical boxes.",
-    images: ["/images/categories/cosmetic_1.jpg", "/images/categories/cosmetic_2.jpg"],
+    images: [
+      "/images/categories/cosmetic_1.jpg",
+      "/images/categories/cosmetic_2.jpg",
+    ],
   },
 ];
 

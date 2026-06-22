@@ -21,13 +21,27 @@ const ShapesListing = () => (
               <Link
                 key={shape.slug}
                 to={`/shapes/${shape.slug}`}
-                className="group border border-border rounded-2xl p-6 bg-card hover:shadow-xl transition-all"
+                className="group border border-border rounded-2xl overflow-hidden bg-card hover:shadow-xl transition-all"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground mb-4 group-hover:scale-110 transition-transform">
-                  <Icon className="h-7 w-7" />
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
+                  {shape.images?.[0] ? (
+                    <img
+                      src={shape.images[0]}
+                      alt={shape.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary/70 text-primary-foreground">
+                      <Icon className="h-10 w-10" />
+                    </div>
+                  )}
                 </div>
-                <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{shape.name}</h3>
-                <p className="text-sm text-muted-foreground line-clamp-2">{shape.description}</p>
+                <div className="p-4">
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{shape.name}</h3>
+                  <span className="text-xs text-primary mt-1 inline-block">
+                    View Products →
+                  </span>
+                </div>
               </Link>
             );
           })}

@@ -1,5 +1,5 @@
-import { Shirt, Cannabis, Cigarette, Pill, Gift, Package, FlaskConical, ShoppingBag, Cpu } from "lucide-react";
-import { CandleIcon, SoapIcon, FoodDomeIcon, CandyIcon, LipstickIcon, CupcakeIcon, LuxuryBoxIcon, RingIcon } from "@/components/icons/category-icons";
+import { Shirt, Cannabis, Cigarette, Pill, Gift, Cog, ShoppingBag, Cpu } from "lucide-react";
+import { CandleIcon, SoapIcon, FoodDomeIcon, CandyIcon, LipstickIcon, CupcakeIcon, LuxuryBoxIcon, RingIcon, MylarBagIcon, OilBottleIcon } from "@/components/icons/category-icons";
 
 export interface SubProduct {
   name: string;
@@ -146,7 +146,7 @@ export const categories: Category[] = [
   {
     slug: "auto-parts",
     name: "Auto Parts Packaging",
-    icon: Package,
+    icon: Cog,
     gradient: "from-slate-500 to-slate-700",
     images: [
       "/images/categories/autoparts1.jpg",
@@ -305,7 +305,7 @@ export const categories: Category[] = [
   {
     slug: "mylar-bags",
     name: "Custom Mylar Bags",
-    icon: Package,
+    icon: MylarBagIcon,
     gradient: "from-zinc-500 to-neutral-700",
     images: ["/images/categories/mylar_1.jpg", "/images/categories/mylar_2.jpg", "/images/categories/mylar_3.jpg", "/images/categories/mylar_4.jpg", "/images/categories/mylar_5.jpg"],
     description: "Durable mylar bags with barrier protection for food, cannabis, and specialty products.",
@@ -326,7 +326,7 @@ export const categories: Category[] = [
   {
     slug: "oil-packaging",
     name: "Custom Oil Packaging",
-    icon: FlaskConical,
+    icon: OilBottleIcon,
     gradient: "from-emerald-500 to-teal-600",
     images: ["/images/categories/oil_1.jpg", "/images/categories/oil_2.jpg", "/images/categories/oil_3.jpg", "/images/categories/oil_4.jpg", "/images/categories/oil_5.jpg"],
     description: "Custom oil packaging boxes for essential oils, CBD oils, and beauty oil products.",

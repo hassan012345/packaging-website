@@ -25,11 +25,11 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
 const quoteSchema = z.object({
   product_type: z.enum(productTypes, { errorMap: () => ({ message: "Please select a product type." }) }),
-  length: z.string().refine(v => v === "" || (!isNaN(Number(v)) && Number(v) > 0 && Number(v) <= 10000), { message: "Must be 0–10,000." }).optional(),
-  width: z.string().refine(v => v === "" || (!isNaN(Number(v)) && Number(v) > 0 && Number(v) <= 10000), { message: "Must be 0–10,000." }).optional(),
-  height: z.string().refine(v => v === "" || (!isNaN(Number(v)) && Number(v) > 0 && Number(v) <= 10000), { message: "Must be 0–10,000." }).optional(),
+  length: z.string().refine(v => v === "" || (!isNaN(Number(v)) && Number(v) > 0 && Number(v) <= 10000), { message: "Must be 0-10,000." }).optional(),
+  width: z.string().refine(v => v === "" || (!isNaN(Number(v)) && Number(v) > 0 && Number(v) <= 10000), { message: "Must be 0-10,000." }).optional(),
+  height: z.string().refine(v => v === "" || (!isNaN(Number(v)) && Number(v) > 0 && Number(v) <= 10000), { message: "Must be 0-10,000." }).optional(),
   unit: z.enum(["inches", "cm", "mm"]),
-  quantity: z.string().refine(v => { const n = Number(v); return Number.isInteger(n) && n >= 50 && n <= 1000000; }, { message: "Quantity must be 50–1,000,000." }),
+  quantity: z.string().refine(v => { const n = Number(v); return Number.isInteger(n) && n >= 50 && n <= 1000000; }, { message: "Quantity must be 50-1,000,000." }),
   name: z.string().trim().min(1, "Name is required.").max(100, "Max 100 characters."),
   email: z.string().trim().max(255, "Max 255 characters.").refine(v => v === "" || /^\S+@\S+\.\S+$/.test(v), { message: "Invalid email." }),
   phone: z.string().max(20, "Max 20 characters.").refine(v => v === "" || /^[+\d\s().\-]+$/.test(v), { message: "Invalid phone number." }),
@@ -145,21 +145,22 @@ const QuoteForm = () => {
 
   return (
     <div>
-      <div className="text-center mb-8">
+      <div className="text-center mb-6">
         <span className="text-primary font-semibold text-sm uppercase tracking-wider">Free Quote</span>
         <h2 className="text-3xl md:text-5xl font-black mt-2 text-foreground">
           Get a Quote in 15 Minutes
         </h2>
-        <p className="text-muted-foreground mt-4">
+        <p className="text-muted-foreground mt-2">
           Fill out the form below and our team will respond within 15 minutes during business hours.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-card rounded-2xl shadow-lg p-8 md:p-10 space-y-6 border border-border">
+      <form onSubmit={handleSubmit} className="bg-card rounded-2xl shadow-lg p-6 md:p-8 space-y-4 border border-border">
+        <div className="w-16 h-1 bg-[#FFC107] rounded-full" />
         {/* Product Type & Material */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold mb-2 text-foreground">Product Type *</label>
+            <label className="block text-sm font-semibold mb-1 text-primary">Product Type *</label>
             <Select value={form.product_type} onValueChange={(v) => set("product_type", v)}>
               <SelectTrigger className={errors.product_type ? "border-destructive" : ""}><SelectValue placeholder="Select product type" /></SelectTrigger>
               <SelectContent>
@@ -171,7 +172,7 @@ const QuoteForm = () => {
             {errors.product_type && <p className="text-destructive text-xs mt-1">{errors.product_type}</p>}
           </div>
           <div>
-            <label className="block text-sm font-semibold mb-2 text-foreground">Material</label>
+            <label className="block text-sm font-semibold mb-1 text-primary">Material</label>
             <Select value={form.material} onValueChange={(v) => set("material", v)}>
               <SelectTrigger><SelectValue placeholder="Select material" /></SelectTrigger>
               <SelectContent>
@@ -185,7 +186,7 @@ const QuoteForm = () => {
 
         {/* Dimensions */}
         <div>
-          <label className="block text-sm font-semibold mb-2 text-foreground">Dimensions</label>
+          <label className="block text-sm font-semibold mb-1 text-primary">Dimensions</label>
           <TooltipProvider delayDuration={200}>
             <div className="grid grid-cols-4 gap-3">
               <Tooltip>
@@ -220,7 +221,7 @@ const QuoteForm = () => {
 
         {/* Quantity */}
         <div>
-          <label className="block text-sm font-semibold mb-2 text-foreground">Quantity *</label>
+          <label className="block text-sm font-semibold mb-1 text-primary">Quantity *</label>
           <Input placeholder="e.g. 500" type="number" min="50" max="1000000" value={form.quantity} onChange={(e) => set("quantity", e.target.value)} className={errors.quantity ? "border-destructive" : ""} />
           {errors.quantity && <p className="text-destructive text-xs mt-1">{errors.quantity}</p>}
         </div>
@@ -228,17 +229,17 @@ const QuoteForm = () => {
         {/* Contact Info */}
         <div className="grid md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-semibold mb-2 text-foreground">Name *</label>
+            <label className="block text-sm font-semibold mb-1 text-primary">Name *</label>
             <Input placeholder="Your name" maxLength={100} value={form.name} onChange={(e) => set("name", e.target.value)} className={errors.name ? "border-destructive" : ""} />
             {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
           </div>
           <div>
-            <label className="block text-sm font-semibold mb-2 text-foreground">Email *</label>
+            <label className="block text-sm font-semibold mb-1 text-primary">Email *</label>
             <Input placeholder="you@company.com" type="email" maxLength={255} value={form.email} onChange={(e) => set("email", e.target.value)} className={errors.email ? "border-destructive" : ""} />
             {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
           </div>
           <div>
-            <label className="block text-sm font-semibold mb-2 text-foreground">Phone</label>
+            <label className="block text-sm font-semibold mb-1 text-primary">Phone</label>
             <Input placeholder="+1 (555) 000-0000" maxLength={20} value={form.phone} onChange={(e) => set("phone", e.target.value)} className={errors.phone ? "border-destructive" : ""} />
             {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
           </div>
@@ -246,14 +247,14 @@ const QuoteForm = () => {
 
         {/* Message */}
         <div>
-          <label className="block text-sm font-semibold mb-2 text-foreground">Additional Details</label>
-          <Textarea placeholder="Tell us more about your project..." rows={4} maxLength={2000} value={form.message} onChange={(e) => set("message", e.target.value)} className={errors.message ? "border-destructive" : ""} />
+          <label className="block text-sm font-semibold mb-1 text-primary">Additional Details</label>
+          <Textarea placeholder="Tell us more about your project..." rows={3} maxLength={2000} value={form.message} onChange={(e) => set("message", e.target.value)} className={errors.message ? "border-destructive" : ""} />
           {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
         </div>
 
         {/* File Upload */}
         <div>
-          <label className="block text-sm font-semibold mb-2 text-foreground">Upload Your Design</label>
+          <label className="block text-sm font-semibold mb-1 text-primary">Upload Your Design</label>
           <div
             onClick={() => fileRef.current?.click()}
             className="border-2 border-dashed border-foreground/20 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:border-primary/50 transition-colors"
@@ -261,7 +262,7 @@ const QuoteForm = () => {
             <Upload className="h-5 w-5 text-muted-foreground shrink-0" />
             <div>
               <p className="text-sm text-muted-foreground">
-                {files.length > 0 ? files.map((f) => f.name).join(", ") : "Click to upload (PDF, AI, PSD, PNG, JPG, ZIP) — Max 5 MB"}
+                {files.length > 0 ? files.map((f) => f.name).join(", ") : "Click to upload (PDF, AI, PSD, PNG, JPG, ZIP), Max 5 MB"}
               </p>
             </div>
           </div>

@@ -15,112 +15,13 @@ import BrowseCategoriesGrid from "./BrowseCategoriesGrid";
 import TrustBadges from "./TrustBadges";
 import Testimonials from "@/components/Testimonials";
 import { ChevronRight, Package } from "lucide-react";
+import ThemedFAQ from "./ThemedFAQ";
 
 interface Props {
   category: Category;
 }
 
-import { AnimatePresence, motion } from "framer-motion";
 
-function FAQSection({ faq }) {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-10">
-          Frequently Asked Questions
-        </h2>
-
-        <div className="space-y-4">
-          {faq.map((item, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <motion.div
-                key={index}
-                layout
-                transition={{
-                  duration: 0.25,
-                  ease: "easeInOut",
-                }}
-                className="
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-card
-                  shadow-sm
-                "
-              >
-                <button
-                  onClick={() => toggle(index)}
-                  className="
-                    flex
-                    w-full
-                    items-center
-                    justify-between
-                    gap-4
-                    px-6
-                    py-5
-                    text-left
-                  "
-                >
-                  <span className="font-semibold text-amber-600">
-                    {item.question}
-                  </span>
-
-                  <motion.div
-                    animate={{
-                      rotate: isOpen ? 90 : 0,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronRight className="h-5 w-5 text-amber-600" />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{
-                        height: 0,
-                        opacity: 0,
-                      }}
-                      animate={{
-                        height: "auto",
-                        opacity: 1,
-                      }}
-                      exit={{
-                        height: 0,
-                        opacity: 0,
-                      }}
-                      transition={{
-                        duration: 0.25,
-                        ease: "easeInOut",
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-5">
-                        <p className="text-sm leading-relaxed text-amber-600">
-                          {item.answer}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const CategoryPageTemplate = ({ category }: Props) => {
   const Icon = category.icon;
@@ -169,11 +70,11 @@ const CategoryPageTemplate = ({ category }: Props) => {
         </div>
       </div>
 
-      {/* Hero – 2-column layout */}
+      {/* Hero - 2-column layout */}
       <section className="py-10 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Left – Image gallery */}
+            {/* Left - Image gallery */}
             <div className="space-y-4">
               {images.length > 0 ? (
                 <>
@@ -214,7 +115,7 @@ const CategoryPageTemplate = ({ category }: Props) => {
               )}
             </div>
 
-            {/* Right – Info + Form */}
+            {/* Right - Info + Form */}
             <div className="space-y-5">
               <div>
                 <div className="flex items-center gap-3 mb-2">
@@ -323,7 +224,7 @@ const CategoryPageTemplate = ({ category }: Props) => {
       <Testimonials />
 
       {/* FAQ */}
-      {category.faq.length > 0 && <FAQSection faq={category.faq} />}
+      <ThemedFAQ faq={category.faq} />
     </div>
   );
 };

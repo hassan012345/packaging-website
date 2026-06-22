@@ -1,12 +1,20 @@
-import { useState } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { Link } from "react-router-dom";
 import type { Product } from "@/data/products";
+import { products } from "@/data/products";
 import { getCategoryBySlug } from "@/data/categories";
 import InlineQuoteForm from "./InlineQuoteForm";
 import TrustBadges from "./TrustBadges";
 import BrandLogos from "./BrandLogos";
 import BrowseCategoriesGrid from "./BrowseCategoriesGrid";
 import NewPackagingInfoTabs from "./NewPackagingInfoTabs";
+import ThemedFAQ from "./ThemedFAQ";
 import Testimonials from "@/components/Testimonials";
 import { ChevronRight, Package, CheckCircle } from "lucide-react";
 
@@ -19,12 +27,31 @@ const ProductPageTemplate = ({ product }: Props) => {
   const images = product.images || [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [isClamped, setIsClamped] = useState(false);
 
-  const descriptionLimit = 200;
-  const isLong = product.longDescription.length > descriptionLimit;
-  const displayDesc = expanded || !isLong
-    ? product.longDescription
-    : product.longDescription.slice(0, descriptionLimit) + "…";
+  useLayoutEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const check = () => {
+      setIsClamped(el.scrollHeight > el.clientHeight + 1);
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [product.longDescription]);
+
+  const handleThumbnailClick = useCallback((i: number) => {
+    setActiveIndex(i);
+  }, []);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [images.length, activeIndex]);
 
   return (
     <div>
@@ -47,66 +74,85 @@ const ProductPageTemplate = ({ product }: Props) => {
         </div>
       </div>
 
-      {/* Product hero */}
+      {/* Hero - 2-column layout */}
       <section className="py-10 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Left – Image gallery */}
+            {/* Left - Image gallery */}
             <div className="space-y-4">
-              {/* Main image */}
-              <div className="rounded-2xl overflow-hidden border border-border bg-card aspect-[4/3] relative flex items-center justify-center">
-                {images.length > 0 ? (
-                  <img
-                    src={images[activeIndex]}
-                    alt={`${product.name} - image ${activeIndex + 1}`}
-                    className="w-full h-full object-contain transition-opacity duration-500"
-                  />
-                ) : (
-                  <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${category?.gradient || "from-primary to-primary/70"}`}>
-                    <Package className="h-32 w-32 text-white/40" />
+              {images.length > 0 ? (
+                <>
+                  <div className="rounded-2xl overflow-hidden border border-border bg-card aspect-[4/3] relative flex items-center justify-center">
+                    <img
+                      src={images[activeIndex]}
+                      alt={`${product.name} - image ${activeIndex + 1}`}
+                      className="w-full h-full object-fit transition-opacity duration-500"
+                      key={activeIndex}
+                    />
                   </div>
-                )}
-              </div>
-
-              {/* Thumbnails */}
-              {images.length > 1 && (
-                <div className="flex gap-2 flex-wrap">
-                  {images.map((img, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveIndex(i)}
-                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
-                        i === activeIndex
-                          ? "border-primary ring-2 ring-primary/30"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt={`${product.name} thumbnail ${i + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
+                  <div className="flex gap-2 flex-wrap">
+                    {images.map((img, i) => (
+                      <button
+                        key={i}
+                        onClick={() => handleThumbnailClick(i)}
+                        className={`rounded-xl overflow-hidden border-2 transition-all w-20 h-20 ${
+                          i === activeIndex
+                            ? "border-primary shadow-md"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt={`Thumbnail ${i + 1}`}
+                          className="w-full h-full object-fit"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div
+                  className={`rounded-2xl bg-gradient-to-br ${category?.gradient || "from-primary to-primary/70"} aspect-[4/3] flex items-center justify-center`}
+                >
+                  <Package className="h-24 w-24 text-white/40" />
                 </div>
               )}
             </div>
 
-            {/* Right – Product info + form */}
+            {/* Right - Info + Form */}
             <div className="space-y-5">
-              <div className="flex items-center gap-2 mb-2">
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground">{product.name}</h1>
-                <span className="text-xs min-w-fit font-semibold bg-accent text-accent-foreground px-2.5 py-1 rounded-full">
-                  In Stock
-                </span>
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                    {product.name}
+                  </h1>
+                  <span className="text-xs min-w-fit font-semibold bg-accent text-accent-foreground px-2.5 py-1 rounded-full">
+                    In Stock
+                  </span>
+                </div>
               </div>
 
-              {/* Description */}
               <div>
-                <p className="text-muted-foreground leading-relaxed">{displayDesc}</p>
-                {isLong && (
+                <p
+                  ref={textRef}
+                  className="text-muted-foreground leading-relaxed transition-all"
+                  style={
+                    !expanded
+                      ? {
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }
+                      : undefined
+                  }
+                >
+                  {product.longDescription}
+                </p>
+
+                {(isClamped || expanded) && (
                   <button
-                    onClick={() => setExpanded(!expanded)}
+                    onClick={() => setExpanded((v) => !v)}
                     className="text-primary text-sm font-medium mt-1 hover:underline"
                   >
                     {expanded ? "Show Less" : "Read More"}
@@ -124,15 +170,13 @@ const ProductPageTemplate = ({ product }: Props) => {
                 ))}
               </ul>
 
-              {/* Quote form */}
-              <div className="pt-2">
-                <InlineQuoteForm productType={product.name} />
-              </div>
+              <InlineQuoteForm productType={product.name} />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Trust Badges */}
       <section className="py-8 bg-muted/20 border-y border-border">
         <div className="container mx-auto px-4">
           <TrustBadges />
@@ -141,29 +185,65 @@ const ProductPageTemplate = ({ product }: Props) => {
 
       <BrandLogos />
 
+      {/* Related products grid */}
+      {category && category.subProducts.length > 0 && (
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-3">
+              We Are Your Best Solution
+            </h2>
+            <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+              Explore our full range of {category.name.toLowerCase()} tailored to
+              your specific needs.
+            </p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {category.subProducts.map((sub) => {
+                const sibling = products.find((p) => p.slug === sub.slug);
+                const thumbImage = sibling?.images?.[0];
+                const isCurrent = sub.slug === product.slug;
+                return (
+                  <Link
+                    key={sub.slug}
+                    to={`/product/${sub.slug}`}
+                    className={`group border rounded-2xl overflow-hidden bg-card hover:shadow-xl transition-all ${
+                      isCurrent ? "border-primary ring-2 ring-primary/30" : "border-border"
+                    }`}
+                  >
+                    <div
+                      className={`aspect-[4/3] ${thumbImage ? "" : `bg-gradient-to-br ${category.gradient}`} flex items-center justify-center overflow-hidden`}
+                    >
+                      {thumbImage ? (
+                        <img
+                          src={thumbImage}
+                          alt={sub.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                      ) : (
+                        <Package className="h-16 w-16 text-white/60 group-hover:scale-110 transition-transform" />
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {sub.name}
+                      </h3>
+                      <span className="text-xs text-primary mt-1 inline-block">
+                        Get Quote →
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       <NewPackagingInfoTabs />
       <BrowseCategoriesGrid />
       <Testimonials />
 
       {/* FAQ */}
-      {product.faq.length > 0 && (
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <h2 className="text-3xl font-bold text-center text-foreground mb-10">Frequently Asked Questions</h2>
-            <div className="space-y-4">
-              {product.faq.map((item, i) => (
-                <details key={i} className="bg-card border border-border rounded-xl p-5 group">
-                  <summary className="font-semibold cursor-pointer list-none flex items-center justify-between text-amber-600">
-                    {item.question}
-                    <ChevronRight className="h-4 w-4 transition-transform group-open:rotate-90" />
-                  </summary>
-                  <p className="mt-3 text-amber-600 text-sm leading-relaxed">{item.answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <ThemedFAQ faq={product.faq} />
     </div>
   );
 };

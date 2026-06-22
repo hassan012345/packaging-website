@@ -7,7 +7,7 @@ const OthersListing = () => (
       <div className="container mx-auto px-4 text-center text-primary-foreground">
         <h1 className="text-4xl font-bold mb-4">Other Products</h1>
         <p className="text-lg text-white/80 max-w-2xl mx-auto">
-          Beyond boxes — explore our full range of custom printed products including stickers, labels, flyers, and more.
+          Beyond boxes, explore our full range of custom printed products including stickers, labels, flyers, and more.
         </p>
       </div>
     </section>

@@ -7,7 +7,7 @@ const Industries = () => (
       <div className="container mx-auto px-4 text-center text-primary-foreground">
         <h1 className="text-4xl font-bold mb-4">Industries We Serve</h1>
         <p className="text-lg text-white/80 max-w-2xl mx-auto">
-          Custom packaging solutions for every industry. From food to fashion, cosmetics to cannabis — we've got you covered.
+          Custom packaging solutions for every industry. From food to fashion, cosmetics to cannabis, we've got you covered.
         </p>
       </div>
     </section>

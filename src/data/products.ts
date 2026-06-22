@@ -355,7 +355,7 @@ export const products: Product[] = [
     features: ["Food-grade materials", "Grease-resistant", "Custom branding", "Multiple sizes", "Stackable design"],
     images: ["/images/categories/foodtray_1.jpg", "/images/categories/foodtray_2.jpg", "/images/categories/foodtray_3.jpg", "/images/categories/foodtray_4.jpg"],
     faq: [
-      { question: "Are food trays microwave-safe?", answer: "We offer microwave-safe options — please specify your requirements when ordering." },
+      { question: "Are food trays microwave-safe?", answer: "We offer microwave-safe options, please specify your requirements when ordering." },
     ],
   },
   {
@@ -441,7 +441,7 @@ export const products: Product[] = [
     longDescription: "Our soap sleeve packaging wraps around your bars for a clean, minimalist look. Perfect for brands that want to showcase the soap itself while adding branded elements.",
     features: ["Minimalist design", "Full-color printing", "Custom sizes", "Easy application", "Eco-friendly options"],
     faq: [
-      { question: "How are soap sleeves applied?", answer: "Soap sleeves simply wrap around the bar — no glue needed for most designs." },
+      { question: "How are soap sleeves applied?", answer: "Soap sleeves simply wrap around the bar, no glue needed for most designs." },
     ],
     images: ["/images/categories/soapsleeve_1.jpg", "/images/categories/soapsleeve_2.jpg", "/images/categories/soapsleeve_3.jpg", "/images/categories/soapsleeve_4.jpg"],
   },

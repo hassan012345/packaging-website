@@ -11,7 +11,7 @@ const PrivacyPolicy = () => (
       <div className="container mx-auto px-4 max-w-3xl prose prose-sm">
         <h2 className="text-2xl font-bold text-foreground mb-4">Privacy Policy</h2>
         <p className="text-muted-foreground mb-4">
-          Custom Packaging Lane ("we," "us," or "our") is committed to protecting the privacy and security of your personal information. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our website at custompackaginglane.com, place an order, or interact with our services. By using our website or services, you consent to the practices described in this policy.
+          Custom Packaging Line ("we," "us," or "our") is committed to protecting the privacy and security of your personal information. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our website at custompackagingline.com, place an order, or interact with our services. By using our website or services, you consent to the practices described in this policy.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Information We Collect</h3>
@@ -42,12 +42,12 @@ const PrivacyPolicy = () => (
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Cookies and Tracking Technologies</h3>
         <p className="text-muted-foreground mb-4">
-          Custom Packaging Lane uses cookies, web beacons, and similar tracking technologies to enhance your browsing experience and gather analytical data about website usage. Cookies are small text files stored on your device that help us recognize your browser and remember your preferences. We use both session cookies (which expire when you close your browser) and persistent cookies (which remain on your device until deleted). You can control cookie preferences through your browser settings. Disabling cookies may affect certain features and functionality of our website.
+          Custom Packaging Line uses cookies, web beacons, and similar tracking technologies to enhance your browsing experience and gather analytical data about website usage. Cookies are small text files stored on your device that help us recognize your browser and remember your preferences. We use both session cookies (which expire when you close your browser) and persistent cookies (which remain on your device until deleted). You can control cookie preferences through your browser settings. Disabling cookies may affect certain features and functionality of our website.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Third-Party Sharing</h3>
         <p className="text-muted-foreground mb-4">
-          Custom Packaging Lane does not sell, trade, or rent your personal information to third parties. We share your information only with trusted service providers who assist us in operating our business, and only to the extent necessary to perform their services:
+          Custom Packaging Line does not sell, trade, or rent your personal information to third parties. We share your information only with trusted service providers who assist us in operating our business, and only to the extent necessary to perform their services:
         </p>
         <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
           <li><strong>Payment Processors:</strong> Secure, PCI-compliant payment gateways that process your credit card and payment transactions.</li>
@@ -70,16 +70,16 @@ const PrivacyPolicy = () => (
         <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
           <li><strong>Right to Know:</strong> You may request information about the categories and specific pieces of personal information we have collected about you.</li>
           <li><strong>Right to Delete:</strong> You may request deletion of your personal information, subject to certain exceptions.</li>
-          <li><strong>Right to Opt-Out:</strong> You may opt out of the sale of your personal information. Custom Packaging Lane does not sell personal information.</li>
+          <li><strong>Right to Opt-Out:</strong> You may opt out of the sale of your personal information. Custom Packaging Line does not sell personal information.</li>
           <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of your CCPA rights.</li>
         </ul>
         <p className="text-muted-foreground mb-4">
-          To exercise your CCPA rights, please contact us at support@custompackaginglane.com or call +1 (970) 794-3622. We will respond to verifiable consumer requests within 45 days.
+          To exercise your CCPA rights, please contact us at support@custompackagingline.com or call +1 (970) 794-3622. We will respond to verifiable consumer requests within 45 days.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Your Rights and Choices</h3>
         <p className="text-muted-foreground mb-4">
-          You have the right to access, update, or delete your personal information at any time. You may unsubscribe from marketing emails by clicking the "unsubscribe" link in any promotional email. You may request a copy of your personal data or ask us to correct inaccurate information by contacting our support team. If you wish to have your account and associated data deleted, please email support@custompackaginglane.com with your request.
+          You have the right to access, update, or delete your personal information at any time. You may unsubscribe from marketing emails by clicking the "unsubscribe" link in any promotional email. You may request a copy of your personal data or ask us to correct inaccurate information by contacting our support team. If you wish to have your account and associated data deleted, please email support@custompackagingline.com with your request.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Data Retention</h3>
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => (
           If you have any questions, concerns, or requests regarding this Privacy Policy or the handling of your personal information, please contact us at:
         </p>
         <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
-          <li>Email: support@custompackaginglane.com</li>
+          <li>Email: support@custompackagingline.com</li>
           <li>Phone: +1 (970) 794-3622</li>
           <li>Hours: Monday through Friday, 9:00 AM to 6:00 PM EST</li>
         </ul>

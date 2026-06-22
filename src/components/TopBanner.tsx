@@ -60,7 +60,7 @@ const TopBanner = () => (
           <div className="animate-marquee whitespace-nowrap flex gap-16">
             {[...Array(4)].map((_, i) => (
               <span key={i} className="text-xs font-bold tracking-wide">
-                7 days 🕛 and enjoy an exclusive 20% discount on your first order! Don't miss out — order today! 🎉
+                7 days 🕛 and enjoy an exclusive 20% discount on your first order! Don't miss out, order today! 🎉
               </span>
             ))}
           </div>

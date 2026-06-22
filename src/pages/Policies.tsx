@@ -11,7 +11,7 @@ const Policies = () => (
       <div className="container mx-auto px-4 max-w-3xl prose prose-sm">
         <h2 className="text-2xl font-bold text-foreground mb-4">Privacy Policy</h2>
         <p className="text-muted-foreground mb-4">
-          At Custom Packaging Lane, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or use our services.
+          At Custom Packaging Line, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or use our services.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Information We Collect</h3>
@@ -40,7 +40,7 @@ const Policies = () => (
 
         <h3 className="text-xl font-semibold text-foreground mb-3">Contact Us</h3>
         <p className="text-muted-foreground mb-4">
-          If you have questions about this Privacy Policy, please contact us at support@custompackaginglane.com.
+          If you have questions about this Privacy Policy, please contact us at support@custompackagingline.com.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mb-4 mt-10">Terms of Service</h2>

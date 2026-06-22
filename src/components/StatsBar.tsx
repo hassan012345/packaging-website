@@ -1,5 +1,5 @@
 const promoText =
-  "Get fast delivery in just 7 days 🕛 and enjoy an exclusive 20% discount on your first order! Don't miss out — order today! 🎉";
+  "Get fast delivery in just 7 days 🕛 and enjoy an exclusive 20% discount on your first order! Don't miss out, order today! 🎉";
 
 const seoContent = (
   <>
@@ -109,7 +109,7 @@ const StatsBar = () => (
       </div>
     </div> */}
 
-    {/* About Us content — open prose layout */}
+    {/* About Us content, open prose layout */}
     <div className="container mx-auto px-4 max-w-6xl">
       <div className="text-center mb-8">
         <span className="text-primary font-semibold text-sm uppercase tracking-wider">

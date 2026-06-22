@@ -59,11 +59,11 @@ const CustomBoxes = () => {
         </div>
       </div>
 
-      {/* Hero Section – 2-column layout */}
+      {/* Hero Section - 2-column layout */}
       <section className="py-10 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Left – Image gallery */}
+            {/* Left - Image gallery */}
             <div className="space-y-4">
               {images.length > 0 ? (
                 <>
@@ -102,7 +102,7 @@ const CustomBoxes = () => {
               )}
             </div>
 
-            {/* Right – Info + Form */}
+            {/* Right - Info + Form */}
             <div className="space-y-5">
               <div>
                 <div className="flex items-center gap-3 mb-2">

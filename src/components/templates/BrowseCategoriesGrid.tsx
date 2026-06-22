@@ -26,7 +26,7 @@ const BrowseCategoriesGrid = () => {
     <section id="products" className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-3">
-          Browse Our Categories
+          Browse Other Categories
         </h2>
         <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
           Explore our complete range of custom packaging solutions tailored to
@@ -114,7 +114,7 @@ const BrowseCategoriesGrid = () => {
               </div>
               <div className="p-4 bg-primary text-primary-foreground flex items-center justify-between">
                 <h3 className="font-semibold">
-                  Can't find your category — Any Shape, Any Size
+                  Can't find your category, Any Shape, Any Size
                 </h3>
                 <ArrowRight className="h-4 w-4 shrink-0 group-hover:translate-x-1 transition-transform" />
               </div>

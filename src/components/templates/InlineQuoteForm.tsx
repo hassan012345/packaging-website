@@ -179,7 +179,7 @@ const InlineQuoteForm = ({ productType = "Custom" }: Props) => {
         <div onClick={() => fileRef.current?.click()} className="border-2 border-dashed border-foreground/20 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:border-primary/50 transition-colors">
           <Upload className="h-5 w-5 text-muted-foreground shrink-0" />
           <p className="text-sm text-muted-foreground">
-            {files.length > 0 ? files.map((f) => f.name).join(", ") : "Click to upload (PDF, AI, PSD, PNG, JPG, ZIP) — Max 5 MB"}
+            {files.length > 0 ? files.map((f) => f.name).join(", ") : "Click to upload (PDF, AI, PSD, PNG, JPG, ZIP), Max 5 MB"}
           </p>
         </div>
         <input ref={fileRef} type="file" multiple accept=".pdf,.ai,.psd,.png,.jpg,.jpeg,.zip" onChange={handleFileChange} className="hidden" />

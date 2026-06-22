@@ -22,6 +22,7 @@ const ShapesListing = lazy(() => import("./pages/ShapesListing"));
 const MaterialsListing = lazy(() => import("./pages/MaterialsListing"));
 const OthersListing = lazy(() => import("./pages/OthersListing"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
+const ContactSales = lazy(() => import("./pages/ContactSales"));
 const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
 const ArtworkPolicy = lazy(() => import("./pages/ArtworkPolicy"));
 const PaymentPolicy = lazy(() => import("./pages/PaymentPolicy"));
@@ -63,6 +64,7 @@ const App = () => (
               <Route path="/others" element={<OthersListing />} />
               <Route path="/search" element={<SearchResults />} />
               <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/contact-sales" element={<ContactSales />} />
               <Route path="/refund-policy" element={<RefundPolicy />} />
               <Route path="/artwork-policy" element={<ArtworkPolicy />} />
               <Route path="/payment-policy" element={<PaymentPolicy />} />

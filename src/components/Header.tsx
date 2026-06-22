@@ -201,8 +201,8 @@ const Header = () => {
         >
           <img
             src={logoImg}
-            alt="Custom Packaging Lane"
-            className="h-10 md:h-10 w-auto"
+            alt="Custom Packaging Line"
+            className="h-14 md:h-16 w-auto"
           />
         </Link>
 
@@ -264,23 +264,23 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-5">
           <form onSubmit={handleSearchSubmit} className="relative">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <button
+              type="submit"
+              aria-label="Search"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Search className="h-4 w-4" />
+            </button>
             <Input
               type="text"
               value={searchTerm}
               onChange={(event) => handleSearchChange(event.target.value)}
               onFocus={() => searchTerm && setShowSearchDropdown(true)}
               placeholder="Search products..."
-              className="w-56 h-9 text-sm pl-8 pr-16 border-foreground/30"
+              className="w-56 h-9 text-sm pl-8 pr-3 border-foreground/30"
             />
-            <button
-              type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground"
-            >
-              Go
-            </button>
 
             {showSearchDropdown && searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
@@ -346,21 +346,26 @@ const Header = () => {
               />
 
               {showSearchDropdown && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
-                  {searchResults.map((result, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        handleSearchResultClick(result.slug);
-                        setMobileOpen(false);
-                      }}
-                      className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0"
-                    >
-                      <span className="text-sm text-popover-foreground">
-                        {result.name}
-                      </span>
-                    </button>
-                  ))}
+                <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 flex flex-col max-h-80 overflow-hidden">
+                  {/* Scrollable results */}
+                  <div className="overflow-y-auto">
+                    {searchResults.map((result, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          handleSearchResultClick(result.slug);
+                          setMobileOpen(false);
+                        }}
+                        className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0"
+                      >
+                        <span className="text-sm text-popover-foreground">
+                          {result.name}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Pinned footer */}
                   <button
                     onClick={() => {
                       const searchValue = searchTerm.trim();
@@ -372,7 +377,7 @@ const Header = () => {
                         setMobileOpen(false);
                       }
                     }}
-                    className=" w-full px-4 py-2.5 text-sm font-semibold text-primary hover:bg-accent transition-colors border-t border-border/30"
+                    className="sticky bottom-0 z-55 shrink-0 w-full px-4 py-2.5 text-sm font-semibold text-primary bg-popover hover:bg-accent transition-colors border-t border-border"
                   >
                     View all results
                   </button>

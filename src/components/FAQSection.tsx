@@ -6,8 +6,8 @@ const faqs = [
   { q: "What printing options are available?", a: "We offer CMYK offset printing, digital printing, and flexographic printing. Our team will recommend the best option based on your design and quantity." },
   { q: "What is the ordering process?", a: "Simply submit a quote request, share your design (or let us create one for free), approve the mockup, and we handle production and delivery." },
   { q: "What is the minimum order quantity?", a: "Our minimum order starts at just 50 boxes, making it accessible for small businesses and startups." },
-  // { q: "Can I fully customize the size and style?", a: "Absolutely! Every box is made to your exact specifications — custom dimensions, shapes, materials, and finishes." },
-  // { q: "Do you offer 3D mockups?", a: "Yes, we provide free 3D digital mockups so you can visualize your packaging before production begins." },
+  { q: "Can I fully customize the size and style?", a: "Absolutely! Every box is made to your exact specifications, custom dimensions, shapes, materials, and finishes." },
+  { q: "Do you offer 3D mockups?", a: "Yes, we provide free 3D digital mockups so you can visualize your packaging before production begins." },
   // { q: "Can I get physical prototypes?", a: "Yes, we offer pre-production physical prototypes so you can feel the material and see the design in person." },
   // { q: "Can you print my logo on the packaging?", a: "Of course! We specialize in custom logo printing with options for foil stamping, embossing, debossing, and spot UV." },
   // { q: "Do you offer double-sided printing?", a: "Yes, we offer both inside and outside printing to maximize your branding real estate." },
@@ -15,15 +15,18 @@ const faqs = [
 ];
 
 const FAQSection = () => (
-  <div>
-    <h3 className="text-2xl font-black text-foreground mb-6">Frequently Asked Questions</h3>
-    <Accordion type="single" collapsible className="space-y-3">
+  <div className="bg-primary rounded-2xl shadow-lg p-8 md:p-10">
+    <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-wide">
+      Frequently Asked Questions
+    </h3>
+    <div className="w-16 h-1 bg-[#FFC107] rounded-full mt-3 mb-6" />
+    <Accordion type="single" collapsible defaultValue="faq-0">
       {faqs.map((faq, i) => (
-        <AccordionItem key={i} value={`faq-${i}`} className="border rounded-xl px-6 bg-background border-amber-200">
-          <AccordionTrigger className="text-left font-semibold text-amber-600 hover:no-underline">
+        <AccordionItem key={i} value={`faq-${i}`} className="border-b border-white/20 last:border-0">
+          <AccordionTrigger className="text-left font-semibold text-white hover:no-underline [&>svg]:text-[#FFC107]">
             {faq.q}
           </AccordionTrigger>
-          <AccordionContent className="text-amber-600 leading-relaxed">
+          <AccordionContent className="text-[#FFC107] leading-relaxed">
             {faq.a}
           </AccordionContent>
         </AccordionItem>

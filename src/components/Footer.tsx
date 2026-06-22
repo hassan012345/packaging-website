@@ -1,17 +1,6 @@
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Truck,
-  ShieldCheck,
-  Lock,
-  Award,
-  Shield,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Truck } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { categories } from "@/data/categories";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -19,7 +8,9 @@ import {
   LinkedInIcon,
   PinterestIcon,
 } from "@/components/icons/social-icons";
-import logoImg from "@/assets/transparent-logo.png";
+import uspsLogo from "@/assets/logos/usps.svg";
+import dhlLogo from "@/assets/logos/dhl.svg";
+import fedexLogo from "@/assets/logos/fedex.svg";
 
 const VisaIcon = () => (
   <svg viewBox="0 0 48 32" className="h-7 w-12">
@@ -142,18 +133,18 @@ const Footer = () => {
     <footer className="bg-secondary text-secondary-foreground">
       <div className="flex justify-center mb-4 py-8 rounded-lg">
         <img
-          src={logoImg}
-          alt="Custom Packaging Lane"
-          className="h-16 w-auto object-contain"
+          src="/images/logos/white-logo.png"
+          alt="Custom Packaging Line"
+          className="h-20 w-auto object-contain"
         />
       </div>
-      <hr className="max-w-5xl border-t border-secondary-foreground/20 mb-10 mx-auto" />
+      <hr className="max-w-6xl border-t-2 border-white mb-10 mx-auto" />
 
       <div className="container mx-auto px-4 pt-6 pb-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-10 items-start">
           {/* Column 1 — Payment + Social (3/12) */}
           <div className="lg:col-span-3">
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3 text-white">
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Payment Methods
             </h4>
             <div className="flex items-center gap-2.5 flex-wrap mb-6">
@@ -174,7 +165,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3 text-white">
+            <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Connect with Us
             </h4>
             <div className="flex items-center gap-2.5">
@@ -352,33 +343,33 @@ const Footer = () => {
           <p className="text-center text-sm font-bold uppercase tracking-widest text-white mb-6">
             Our Logistics Partners
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img
-              src="/images/logos/usps-logo.png"
-              alt="USPS"
-              className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
-            />
-            <img
-              src="/images/logos/dhl-logo.png"
-              alt="DHL"
-              className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
-            />
-            <img
-              src="/images/logos/fedex-logo.png"
-              alt="FedEx"
-              className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
-            />
-            <img
-              src="/images/logos/UPS-logo.jpg"
-              alt="UPS"
-              className="h-14 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-all"
-            />
+
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+            {[
+              { src: uspsLogo, alt: "USPS", href: "https://www.usps.com/" },
+              { src: dhlLogo, alt: "DHL", href: "https://www.dhl.com/" },
+              { src: fedexLogo, alt: "FedEx", href: "https://www.fedex.com/" },
+            ].map((logo) => (
+              <a
+                key={logo.alt}
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={logo.alt}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="w-32 md:w-40 h-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                />
+              </a>
+            ))}
           </div>
         </div>
 
         <div className="border-t border-secondary-foreground/10 pt-6 text-center">
           <p className="text-xs text-secondary-foreground/40">
-            © {new Date().getFullYear()} Custom Packaging Lane. All rights
+            © {new Date().getFullYear()} Custom Packaging Line. All rights
             reserved.
           </p>
         </div>

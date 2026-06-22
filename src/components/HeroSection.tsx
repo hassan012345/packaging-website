@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import arrowImg from "@/assets/arrow.png";
 
 const heroImages = [
@@ -44,11 +45,13 @@ const HeroSection = () => {
               </Button>
               <div className="flex items-center gap-3">
                 <Button
+                  asChild
                   size="lg"
                   className="bg-[#3f9472] text-lg px-8 py-6 border border-white/40 text-white hover:bg-[#2d6b53] hover:text-white"
-                  onClick={() => scrollTo("quote")}
                 >
-                  Contact Sales <ArrowRight className="ml-2 h-5 w-5" />
+                  <Link to="/contact-sales">
+                    Contact Sales <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </Button>
                 <div className="flex flex-col">
                   <span className="ml-6 mt-4 text-sm hidden sm:block text-[#7A7A7A]">

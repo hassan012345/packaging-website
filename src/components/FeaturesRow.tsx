@@ -25,7 +25,7 @@ const features = [
   {
     icon: DollarSign,
     title: "Price Match Guarantee",
-    desc: "We'll match any competitor's price — guaranteed.",
+    desc: "We'll match any competitor's price, guaranteed.",
   },
   {
     icon: Cuboid,

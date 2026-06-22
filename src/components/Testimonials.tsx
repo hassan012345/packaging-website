@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const testimonials = [
   { name: "Jessica M.", role: "Candle Brand Owner", rating: 5, text: "The quality of the custom boxes was incredible. Our customers love the unboxing experience and it has elevated our brand significantly." },
   { name: "David R.", role: "E-commerce Entrepreneur", rating: 5, text: "Fast turnaround, amazing print quality, and the free design service saved us so much time and money. Highly recommended!" },
-  { name: "Amanda K.", role: "Cosmetics Startup Founder", rating: 5, text: "We switched to Custom Packaging Lane and haven't looked back. The attention to detail and customer service is unmatched." },
+  { name: "Amanda K.", role: "Cosmetics Startup Founder", rating: 5, text: "We switched to Custom Packaging Line and haven't looked back. The attention to detail and customer service is unmatched." },
   { name: "Marcus T.", role: "Food Brand Manager", rating: 5, text: "From our first order of 100 boxes to now ordering thousands, the consistency and quality have always been top-notch." },
   { name: "Sarah L.", role: "Bakery Owner", rating: 5, text: "Beautiful packaging that keeps our pastries fresh and looking amazing. The window boxes are a hit with our customers!" },
   { name: "Tom W.", role: "CBD Brand Founder", rating: 5, text: "Compliant, professional, and beautifully designed cannabis packaging. They understood our industry needs perfectly." },

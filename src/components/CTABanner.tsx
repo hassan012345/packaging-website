@@ -14,7 +14,7 @@ const CTABanner = () => (
           Ready to Elevate Your Brand?
         </h2>
         <p className="text-primary-foreground/90 mb-8 max-w-2xl mx-auto text-lg font-semibold">
-          Get fast delivery in just 7 days 🕛 and enjoy an exclusive 20% discount on your first order! Don't miss out — order today!
+          Get fast delivery in just 7 days 🕛 and enjoy an exclusive 20% discount on your first order! Don't miss out, order today!
         </p>
         <Button asChild size="lg" variant="secondary" className="text-base font-bold px-10">
           <a href="#quote">Get Your Free Quote →</a>

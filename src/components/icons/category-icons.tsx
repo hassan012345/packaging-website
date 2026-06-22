@@ -169,6 +169,35 @@ export const MailerBoxIcon = makeIcon(
   </>
 );
 
+/** Stand-up pouch / mylar bag — replaces generic Package */
+export const MylarBagIcon = makeIcon(
+  "MylarBagIcon",
+  <>
+    {/* crimped top seal */}
+    <path d="M7.5 3h9v3h-9z" />
+    <line x1="9.5" y1="3" x2="9.5" y2="6" />
+    <line x1="12" y1="3" x2="12" y2="6" />
+    <line x1="14.5" y1="3" x2="14.5" y2="6" />
+    {/* pouch body (tapered, gusseted) */}
+    <path d="M7 6h10l-.6 13a2 2 0 0 1-2 1.9H9.6a2 2 0 0 1-2-1.9L7 6z" />
+  </>
+);
+
+/** Dropper / oil bottle — replaces FlaskConical */
+export const OilBottleIcon = makeIcon(
+  "OilBottleIcon",
+  <>
+    {/* cap */}
+    <rect x="9.5" y="2" width="5" height="3" rx="0.5" />
+    {/* neck */}
+    <rect x="10.5" y="5" width="3" height="2" />
+    {/* bottle body */}
+    <rect x="8" y="7" width="8" height="14" rx="2" />
+    {/* oil drop */}
+    <path d="M12 11c-1.2 1.5-1.8 2.4-1.8 3.2a1.8 1.8 0 0 0 3.6 0c0-.8-.6-1.7-1.8-3.2z" fill="currentColor" strokeWidth="0" />
+  </>
+);
+
 /** Box with window cutout — replaces ScanEye */
 export const WindowBoxIcon = makeIcon(
   "WindowBoxIcon",
