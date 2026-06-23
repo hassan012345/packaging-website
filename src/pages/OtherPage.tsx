@@ -1,29 +1,19 @@
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  useLayoutEffect,
-} from "react";
-import { Link } from "react-router-dom";
-import type { Category } from "@/data/categories";
-import { products } from "@/data/products";
-import InlineQuoteForm from "./InlineQuoteForm";
-import BrandLogos from "./BrandLogos";
-import NewPackagingInfoTabs from "./NewPackagingInfoTabs";
-import BrowseCategoriesGrid from "./BrowseCategoriesGrid";
-import TrustBadges from "./TrustBadges";
+import { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
+import { useParams, Navigate, Link } from "react-router-dom";
+import { othersItems } from "@/data/others";
+import InlineQuoteForm from "@/components/templates/InlineQuoteForm";
+import TrustBadges from "@/components/templates/TrustBadges";
+import BrandLogos from "@/components/templates/BrandLogos";
+import BrowseCategoriesGrid from "@/components/templates/BrowseCategoriesGrid";
+import NewPackagingInfoTabs from "@/components/templates/NewPackagingInfoTabs";
 import Testimonials from "@/components/Testimonials";
-import { ChevronRight, Package } from "lucide-react";
-import ThemedFAQ from "./ThemedFAQ";
+import ThemedFAQ from "@/components/templates/ThemedFAQ";
+import { ChevronRight } from "lucide-react";
 
-interface Props {
-  category: Category;
-}
-
-const CategoryPageTemplate = ({ category }: Props) => {
-  const Icon = category.icon;
-  const images = category.images || [];
+const OtherPage = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const item = othersItems.find((i) => i.slug === `/others/${slug}`);
+  const images = item?.images || [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
@@ -32,18 +22,11 @@ const CategoryPageTemplate = ({ category }: Props) => {
   useLayoutEffect(() => {
     const el = textRef.current;
     if (!el) return;
-    const check = () => {
-      // compare full content height vs visible clamped height
-      setIsClamped(el.scrollHeight > el.clientHeight + 1);
-    };
+    const check = () => setIsClamped(el.scrollHeight > el.clientHeight + 1);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
-  }, [category.longDescription]);
-
-  const handleThumbnailClick = useCallback((i: number) => {
-    setActiveIndex(i);
-  }, []);
+  }, [item?.longDescription]);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -52,6 +35,14 @@ const CategoryPageTemplate = ({ category }: Props) => {
     }, 5000);
     return () => clearInterval(timer);
   }, [images.length, activeIndex]);
+
+  const handleThumbnailClick = useCallback((i: number) => {
+    setActiveIndex(i);
+  }, []);
+
+  if (!item) return <Navigate to="/404" replace />;
+
+  const Icon = item.icon;
 
   return (
     <div>
@@ -63,7 +54,11 @@ const CategoryPageTemplate = ({ category }: Props) => {
               Home
             </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <span className="text-foreground font-medium">{category.name}</span>
+            <Link to="/others" className="hover:text-primary transition-colors">
+              Other Products
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-foreground font-medium">{item.name}</span>
           </nav>
         </div>
       </div>
@@ -79,7 +74,7 @@ const CategoryPageTemplate = ({ category }: Props) => {
                   <div className="rounded-2xl overflow-hidden border border-border bg-card aspect-[4/3] relative flex items-center justify-center">
                     <img
                       src={images[activeIndex]}
-                      alt={`${category.name} - image ${activeIndex + 1}`}
+                      alt={`${item.name} - image ${activeIndex + 1}`}
                       className="w-full h-full object-cover transition-opacity duration-500"
                       key={activeIndex}
                     />
@@ -105,9 +100,7 @@ const CategoryPageTemplate = ({ category }: Props) => {
                   </div>
                 </>
               ) : (
-                <div
-                  className={`rounded-2xl bg-gradient-to-br ${category.gradient} aspect-[4/3] flex items-center justify-center`}
-                >
+                <div className="rounded-2xl bg-gradient-to-br from-primary to-primary/70 aspect-[4/3] flex items-center justify-center">
                   <Icon className="h-24 w-24 text-white/40" />
                 </div>
               )}
@@ -118,7 +111,7 @@ const CategoryPageTemplate = ({ category }: Props) => {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                    {category.name}
+                    {item.name}
                   </h1>
                   <span className="text-xs font-semibold bg-accent text-accent-foreground px-2.5 py-1 rounded-full">
                     In Stock
@@ -141,9 +134,8 @@ const CategoryPageTemplate = ({ category }: Props) => {
                       : undefined
                   }
                 >
-                  {category.longDescription}
+                  {item.longDescription || item.description}
                 </p>
-
                 {(isClamped || expanded) && (
                   <button
                     onClick={() => setExpanded((v) => !v)}
@@ -154,7 +146,7 @@ const CategoryPageTemplate = ({ category }: Props) => {
                 )}
               </div>
 
-              <InlineQuoteForm productType={category.name} />
+              <InlineQuoteForm productType={item.name} />
             </div>
           </div>
         </div>
@@ -168,63 +160,13 @@ const CategoryPageTemplate = ({ category }: Props) => {
       </section>
 
       <BrandLogos />
-
-      {/* Sub-products grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-3">
-            We Are Your Best Solution
-          </h2>
-          <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-            Explore our full range of {category.name.toLowerCase()} tailored to
-            your specific needs.
-          </p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {category.subProducts.map((sub) => {
-              const product = products.find((p) => p.slug === sub.slug);
-              const thumbImage = product?.images?.[0];
-              return (
-                <Link
-                  key={sub.slug}
-                  to={`/product/${sub.slug}`}
-                  className="group border border-border rounded-2xl overflow-hidden bg-card hover:shadow-xl transition-all"
-                >
-                  <div
-                    className={`aspect-[4/3] ${thumbImage ? "" : `bg-gradient-to-br ${category.gradient}`} flex items-center justify-center overflow-hidden`}
-                  >
-                    {thumbImage ? (
-                      <img
-                        src={thumbImage}
-                        alt={sub.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
-                    ) : (
-                      <Package className="h-16 w-16 text-white/60 group-hover:scale-110 transition-transform" />
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {sub.name}
-                    </h3>
-                    <span className="text-xs text-primary mt-1 inline-block">
-                      Get Quote →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       <NewPackagingInfoTabs />
       <BrowseCategoriesGrid />
       <Testimonials />
 
-      {/* FAQ */}
-      <ThemedFAQ faq={category.faq} />
+      <ThemedFAQ faq={item.faq} />
     </div>
   );
 };
 
-export default CategoryPageTemplate;
+export default OtherPage;

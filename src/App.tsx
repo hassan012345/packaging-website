@@ -21,6 +21,7 @@ const CustomBoxes = lazy(() => import("./pages/CustomBoxes"));
 const ShapesListing = lazy(() => import("./pages/ShapesListing"));
 const MaterialsListing = lazy(() => import("./pages/MaterialsListing"));
 const OthersListing = lazy(() => import("./pages/OthersListing"));
+const OtherPage = lazy(() => import("./pages/OtherPage"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const ContactSales = lazy(() => import("./pages/ContactSales"));
 const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
@@ -62,6 +63,7 @@ const App = () => (
               <Route path="/shapes" element={<ShapesListing />} />
               <Route path="/materials" element={<MaterialsListing />} />
               <Route path="/others" element={<OthersListing />} />
+              <Route path="/others/:slug" element={<OtherPage />} />
               <Route path="/search" element={<SearchResults />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-sales" element={<ContactSales />} />

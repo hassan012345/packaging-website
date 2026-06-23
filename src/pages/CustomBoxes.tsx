@@ -8,13 +8,35 @@ import NewPackagingInfoTabs from "@/components/templates/NewPackagingInfoTabs";
 import Testimonials from "@/components/Testimonials";
 import { categories } from "@/data/categories";
 import { shapes } from "@/data/shapes";
-import { Package, CheckCircle, Truck, Paintbrush, ChevronRight } from "lucide-react";
+import {
+  Package,
+  CheckCircle,
+  Truck,
+  Paintbrush,
+  ChevronRight,
+} from "lucide-react";
 
 const features = [
-  { icon: Package, title: "100% Customizable", desc: "Any size, shape, or design to match your brand perfectly." },
-  { icon: CheckCircle, title: "Premium Quality", desc: "High-grade materials with flawless print quality." },
-  { icon: Truck, title: "Free Shipping", desc: "Free doorstep delivery across the USA." },
-  { icon: Paintbrush, title: "Free Design Support", desc: "Our expert designers bring your vision to life at no extra cost." },
+  {
+    icon: Package,
+    title: "100% Customizable",
+    desc: "Any size, shape, or design to match your brand perfectly.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Premium Quality",
+    desc: "High-grade materials with flawless print quality.",
+  },
+  {
+    icon: Truck,
+    title: "Free Shipping",
+    desc: "Free doorstep delivery across the USA.",
+  },
+  {
+    icon: Paintbrush,
+    title: "Free Design Support",
+    desc: "Our expert designers bring your vision to life at no extra cost.",
+  },
 ];
 
 const CustomBoxes = () => {
@@ -24,8 +46,12 @@ const CustomBoxes = () => {
   // Collect showcase images from categories and shapes
   const images = useMemo(() => {
     const allImages: string[] = [];
-    categories.forEach((c) => { if (c.images) allImages.push(...c.images); });
-    shapes.forEach((s) => { if (s.images) allImages.push(...s.images); });
+    categories.forEach((c) => {
+      if (c.images) allImages.push(...c.images);
+    });
+    shapes.forEach((s) => {
+      if (s.images) allImages.push(...s.images);
+    });
     return allImages.length > 0 ? allImages.slice(0, 12) : [];
   }, []);
 
@@ -153,13 +179,19 @@ const CustomBoxes = () => {
             Why Choose Custom Boxes
           </h2>
           <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-            Experience the difference with our premium custom packaging solutions
+            Experience the difference with our premium custom packaging
+            solutions
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((f) => (
-              <div key={f.title} className="bg-card border border-border rounded-2xl p-6 text-center">
+              <div
+                key={f.title}
+                className="bg-card border border-border rounded-2xl p-6 text-center"
+              >
                 <f.icon className="h-10 w-10 text-primary mx-auto mb-3" />
-                <h3 className="font-semibold text-foreground mb-1">{f.title}</h3>
+                <h3 className="font-semibold text-foreground mb-1">
+                  {f.title}
+                </h3>
                 <p className="text-sm text-muted-foreground">{f.desc}</p>
               </div>
             ))}

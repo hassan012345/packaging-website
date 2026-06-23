@@ -708,6 +708,47 @@ export const products: Product[] = [
     ],
   },
 
+  // ===== AUTO PARTS =====
+  {
+    slug: "auto-parts-boxes",
+    name: "Custom Auto Parts Boxes",
+    categorySlug: "auto-parts",
+    description: "Heavy-duty custom boxes designed to protect automotive parts during shipping and storage.",
+    longDescription: "Our auto parts boxes are engineered for durability and protection. Built from premium corrugated and rigid board materials with custom foam or die-cut inserts, they securely hold gears, filters, sensors, and other automotive components of any shape or size.",
+    features: ["Heavy-duty corrugated construction", "Custom foam or die-cut inserts", "Full-color branding", "Multiple size options", "Stackable design"],
+    images: ["/images/categories/autoparts1.jpg", "/images/categories/autoparts2.jpg", "/images/categories/autoparts3.jpg", "/images/categories/autoparts4.jpg"],
+    faq: [
+      { question: "What materials are used for auto parts boxes?", answer: "We use heavy-duty corrugated and rigid board materials engineered to handle the weight of automotive components." },
+      { question: "Can these boxes hold irregularly shaped parts?", answer: "Yes, we offer custom die-cut and foam inserts tailored to the exact shape of your parts." },
+    ],
+  },
+  {
+    slug: "heavy-duty-shipping-boxes",
+    name: "Heavy-Duty Shipping Boxes",
+    categorySlug: "auto-parts",
+    description: "Reinforced shipping boxes built to withstand the rigors of heavy automotive component transit.",
+    longDescription: "Our heavy-duty shipping boxes are constructed from multi-wall corrugated board to handle heavy loads and rough handling during transit. Ideal for large automotive parts, tools, and equipment that require extra strength and impact resistance.",
+    features: ["Multi-wall corrugated board", "High weight capacity", "Reinforced corners", "Custom sizing", "Moisture-resistant options"],
+    images: ["/images/categories/autoparts2.jpg", "/images/categories/autoparts3.jpg", "/images/categories/autoparts4.jpg", "/images/categories/autoparts5.jpg"],
+    faq: [
+      { question: "How much weight can heavy-duty boxes hold?", answer: "Our heavy-duty boxes are rated for loads up to 150 lbs depending on the wall configuration selected." },
+      { question: "Are these boxes moisture-resistant?", answer: "Yes, we offer moisture-resistant coatings to protect parts from humidity during shipping." },
+    ],
+  },
+  {
+    slug: "corrugated-inserts",
+    name: "Corrugated Inserts",
+    categorySlug: "auto-parts",
+    description: "Custom corrugated inserts and dividers to securely hold and separate automotive parts inside shipping boxes.",
+    longDescription: "Our corrugated inserts are precision die-cut to fit your specific parts, preventing movement and damage during transit. Available as full-height dividers, cell packs, or custom-shaped cradles for delicate and precision automotive components.",
+    features: ["Precision die-cut design", "Cell pack and divider options", "Custom cradle shapes", "Recyclable corrugated material", "Fits any box dimension"],
+    images: ["/images/categories/auto_lock_1.jpg", "/images/categories/auto_lock_2.jpg", "/images/categories/auto_lock_3.jpg", "/images/categories/auto_lock_4.jpg"],
+    faq: [
+      { question: "Can inserts be made for fragile components?", answer: "Absolutely — we design custom foam and corrugated cradles specifically for fragile and precision parts." },
+      { question: "Do you offer inserts for multiple parts per box?", answer: "Yes, we produce multi-cell divider inserts that hold multiple parts separately in one box." },
+    ],
+  },
+
   // ===== WINDOW BOXES =====
   {
     slug: "front-window-boxes",
