@@ -141,9 +141,9 @@ const Footer = () => {
       <hr className="max-w-6xl border-t-2 border-white mb-10 mx-auto" />
 
       <div className="container mx-auto px-4 pt-6 pb-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-10 items-start">
-          {/* Column 1 — Payment + Social (3/12) */}
-          <div className="lg:col-span-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 mb-10 items-start">
+          {/* Column 1 — Payment + Social (2/12) */}
+          <div className="lg:col-span-2">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Payment Methods
             </h4>
@@ -217,8 +217,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2 — Information (3/12) */}
-          <div className="lg:col-span-3">
+          {/* Column 2 — Information (2/12) */}
+          <div className="lg:col-span-2">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Information
             </h4>
@@ -267,12 +267,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3 — Packaging Products (3/12) */}
-          <div className="lg:col-span-3">
+          {/* Column 3 — Packaging Products (5/12) */}
+          <div className="lg:col-span-5">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Packaging Products
             </h4>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-secondary-foreground/70">
+            <ul className="grid grid-cols-2 gap-x-8 gap-y-3 text-sm text-secondary-foreground/70">
               {categories.map((cat) => (
                 <li key={cat.slug} className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import { getMaterialBySlug } from "@/data/shapes";
 import InlineQuoteForm from "@/components/templates/InlineQuoteForm";
@@ -7,7 +7,7 @@ import BrandLogos from "@/components/templates/BrandLogos";
 import BrowseCategoriesGrid from "@/components/templates/BrowseCategoriesGrid";
 import NewPackagingInfoTabs from "@/components/templates/NewPackagingInfoTabs";
 import Testimonials from "@/components/Testimonials";
-import { ChevronRight, CheckCircle } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const MaterialPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -15,12 +15,19 @@ const MaterialPage = () => {
   const images = (material as any)?.images || [];
   const [activeIndex, setActiveIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [isClamped, setIsClamped] = useState(false);
 
-  const descriptionLimit = 200;
-  const isLong = material.description.length > descriptionLimit;
-  const displayDesc = expanded || !isLong
-    ? material.description
-    : material.description.slice(0, descriptionLimit) + "…";
+  useLayoutEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const check = () => {
+      setIsClamped(el.scrollHeight > el.clientHeight + 1);
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [material?.description]);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -40,6 +47,7 @@ const MaterialPage = () => {
 
   return (
     <>
+      {/* Breadcrumb */}
       <div className="bg-muted/40 border-b border-border">
         <div className="container mx-auto px-4 py-3">
           <nav className="flex items-center gap-1.5 text-sm text-muted-foreground flex-wrap">
@@ -52,57 +60,97 @@ const MaterialPage = () => {
         </div>
       </div>
 
+      {/* Hero - 2-column layout */}
       <section className="py-10 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Left - Image gallery */}
             <div className="space-y-4">
-              <div className="rounded-2xl overflow-hidden border border-border bg-card aspect-[4/3] relative flex items-center justify-center">
-                {images.length > 0 ? (
-                  <img src={images[activeIndex]} alt={`${material.name} - image ${activeIndex + 1}`} className="w-full h-full object-fit transition-opacity duration-500" key={activeIndex} />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary/70">
-                    <Icon className="h-32 w-32 text-white/40" />
+              {images.length > 0 ? (
+                <>
+                  <div className="rounded-2xl overflow-hidden border border-border bg-card aspect-[4/3] relative flex items-center justify-center">
+                    <img
+                      src={images[activeIndex]}
+                      alt={`${material.name} - image ${activeIndex + 1}`}
+                      className="w-full h-full object-cover transition-opacity duration-500"
+                      key={activeIndex}
+                    />
                   </div>
-                )}
-              </div>
-              {images.length > 1 && (
-                <div className="flex gap-2 flex-wrap">
-                  {images.map((img: string, i: number) => (
-                    <button key={i} onClick={() => handleThumbnailClick(i)} className={`w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${i === activeIndex ? "border-primary ring-2 ring-primary/30" : "border-border hover:border-primary/50"}`}>
-                      <img src={img} alt={`${material.name} thumbnail ${i + 1}`} className="w-full h-full object-fit" />
-                    </button>
-                  ))}
+                  <div className="flex gap-2 flex-wrap">
+                    {images.map((img: string, i: number) => (
+                      <button
+                        key={i}
+                        onClick={() => handleThumbnailClick(i)}
+                        className={`rounded-xl overflow-hidden border-2 transition-all w-20 h-20 ${
+                          i === activeIndex
+                            ? "border-primary shadow-md"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt={`Thumbnail ${i + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="rounded-2xl bg-gradient-to-br from-primary to-primary/70 aspect-[4/3] flex items-center justify-center">
+                  <Icon className="h-24 w-24 text-white/40" />
                 </div>
               )}
             </div>
 
+            {/* Right - Info + Form */}
             <div className="space-y-5">
-              <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground">{material.name}</h1>
-                <span className="text-xs font-semibold bg-accent text-accent-foreground px-2.5 py-1 rounded-full">
-                  In Stock
-                </span>
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                    {material.name}
+                  </h1>
+                  <span className="text-xs font-semibold bg-accent text-accent-foreground px-2.5 py-1 rounded-full">
+                    In Stock
+                  </span>
+                </div>
               </div>
-              <p className="text-muted-foreground leading-relaxed">{displayDesc}</p>
-              {isLong && (
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className="text-primary text-sm font-medium mt-1 hover:underline"
+
+              <div>
+                <p
+                  ref={textRef}
+                  className="text-muted-foreground leading-relaxed transition-all"
+                  style={
+                    !expanded
+                      ? {
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }
+                      : undefined
+                  }
                 >
-                  {expanded ? "Show Less" : "Read More"}
-                </button>
-              )}
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {["Custom sizes available", "Full-color CMYK printing", "Free shipping across USA", "No die & plate charges", "Fast turnaround time", "Eco-friendly options"].map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-foreground"><CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />{f}</li>
-                ))}
-              </ul>
-              <div className="pt-2"><InlineQuoteForm productType={material.name} /></div>
+                  {material.description}
+                </p>
+
+                {(isClamped || expanded) && (
+                  <button
+                    onClick={() => setExpanded((v) => !v)}
+                    className="text-primary text-sm font-medium mt-1 hover:underline"
+                  >
+                    {expanded ? "Show Less" : "Read More"}
+                  </button>
+                )}
+              </div>
+
+              <InlineQuoteForm productType={material.name} />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Trust Badges */}
       <section className="py-8 bg-muted/20 border-y border-border">
         <div className="container mx-auto px-4">
           <TrustBadges />
@@ -110,7 +158,6 @@ const MaterialPage = () => {
       </section>
 
       <BrandLogos />
-
       <NewPackagingInfoTabs />
       <BrowseCategoriesGrid />
       <Testimonials />

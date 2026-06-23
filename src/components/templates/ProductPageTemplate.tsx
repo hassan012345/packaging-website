@@ -86,7 +86,7 @@ const ProductPageTemplate = ({ product }: Props) => {
                     <img
                       src={images[activeIndex]}
                       alt={`${product.name} - image ${activeIndex + 1}`}
-                      className="w-full h-full object-fit transition-opacity duration-500"
+                      className="w-full h-full object-cover transition-opacity duration-500"
                       key={activeIndex}
                     />
                   </div>
