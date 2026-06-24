@@ -349,6 +349,11 @@ const Footer = () => {
               { src: uspsLogo, alt: "USPS", href: "https://www.usps.com/" },
               { src: dhlLogo, alt: "DHL", href: "https://www.dhl.com/" },
               { src: fedexLogo, alt: "FedEx", href: "https://www.fedex.com/" },
+              {
+                src: "/images/logos/ups.svg",
+                alt: "UPS",
+                href: "https://www.ups.com/",
+              },
             ].map((logo) => (
               <a
                 key={logo.alt}

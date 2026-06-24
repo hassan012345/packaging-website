@@ -283,18 +283,23 @@ const Header = () => {
             />
 
             {showSearchDropdown && searchResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
-                {searchResults.map((result, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleSearchResultClick(result.slug)}
-                    className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0"
-                  >
-                    <span className="text-sm text-popover-foreground">
-                      {result.name}
-                    </span>
-                  </button>
-                ))}
+              <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-lg shadow-lg z-50 flex flex-col max-h-80 overflow-hidden">
+                {/* Scrollable results */}
+                <div className="overflow-y-auto">
+                  {searchResults.map((result, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleSearchResultClick(result.slug)}
+                      className="w-full text-left px-4 py-2.5 hover:bg-accent hover:text-accent-foreground transition-colors border-b border-border/30 last:border-0"
+                    >
+                      <span className="text-sm text-popover-foreground">
+                        {result.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Pinned footer */}
                 <button
                   onClick={() => {
                     const searchValue = searchTerm.trim();
@@ -303,7 +308,7 @@ const Header = () => {
                       setShowSearchDropdown(false);
                     }
                   }}
-                  className="w-full px-4 py-2.5 text-sm font-semibold text-primary hover:bg-accent transition-colors border-t border-border/30"
+                  className="shrink-0 w-full px-4 py-2.5 text-sm font-semibold text-primary bg-popover hover:bg-accent transition-colors border-t border-border"
                 >
                   View all results
                 </button>

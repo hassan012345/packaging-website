@@ -1,4 +1,10 @@
-import { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import { getMaterialBySlug } from "@/data/shapes";
 import InlineQuoteForm from "@/components/templates/InlineQuoteForm";
@@ -51,9 +57,16 @@ const MaterialPage = () => {
       <div className="bg-muted/40 border-b border-border">
         <div className="container mx-auto px-4 py-3">
           <nav className="flex items-center gap-1.5 text-sm text-muted-foreground flex-wrap">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link to="/" className="hover:text-primary transition-colors">
+              Home
+            </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <Link to="/materials" className="hover:text-primary transition-colors">Materials</Link>
+            <Link
+              to="/materials"
+              className="hover:text-primary transition-colors"
+            >
+              Materials
+            </Link>
             <ChevronRight className="h-3.5 w-3.5" />
             <span className="text-foreground font-medium">{material.name}</span>
           </nav>
@@ -72,7 +85,7 @@ const MaterialPage = () => {
                     <img
                       src={images[activeIndex]}
                       alt={`${material.name} - image ${activeIndex + 1}`}
-                      className="w-full h-full object-cover transition-opacity duration-500"
+                      className="w-auto h-full  transition-opacity duration-500"
                       key={activeIndex}
                     />
                   </div>
