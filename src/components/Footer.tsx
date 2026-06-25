@@ -141,7 +141,7 @@ const Footer = () => {
       <hr className="max-w-6xl border-t-2 border-white mb-10 mx-auto" />
 
       <div className="container mx-auto px-4 pt-6 pb-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 mb-10 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-10 mb-10 items-start">
           {/* Column 1 — Payment + Social (2/12) */}
           <div className="lg:col-span-2">
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
@@ -168,7 +168,7 @@ const Footer = () => {
             <h4 className="font-bold text-sm uppercase tracking-widest mb-4 text-white">
               Connect with Us
             </h4>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2.5 flex-wrap">
               <a
                 href="https://www.facebook.com/profile.php?id=61589609734656"
                 target="_blank"
